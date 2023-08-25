@@ -1,49 +1,67 @@
-# n4-simple-build
-Simple N4 module build tool
+# n4-simple-build **[WIP]**  
+Simple N4 module build & Lexicon handling tool
 ====================
 
+[![NPM Version](https://img.shields.io/npm/v/n4-simple-build.svg)](https://www.npmjs.com/package/n4-simple-build)
+[![NPM Downloads](https://img.shields.io/npm/dt/n4-simple-build.svg)](https://www.npmjs.com/package/n4-simple-build)
+[![GitHub](https://img.shields.io/github/license/SheepCreativeSoftware/n4-simple-build)](https://github.com/SheepCreativeSoftware/n4-simple-build)
+[![node-lts](https://img.shields.io/node/v-lts/n4-simple-build)](https://www.npmjs.com/package/n4-simple-build)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=RG6PSXR828X94)
 
+## Important Note
+**This module is still work in progress!**  
+**Major changes can and will happend before v1.0.0**  
+**Do not use this in an production enviroment**  
 
-## Todo
-- Executable global via node
-- Only one module per folder instance (That's clearer)
-- First implement Lexicon module builder
-- Try to use commonjs (pkg would be possible)
-## Commands
-### Init
-- Init Function to create basic folder/file structure
-	- Ask for:
-		- module Name
-		- vendor
-		- Description
-		- type (ux, rt, Lexicon)
-		- version (defualt 0.0.0)
-		- (Only if UX) Has TypeScript?
-		- (If Lexicon) Lexicon module path
-		- (If Lexicon) lexicon enconding
-		- (If Lexicon) csv delimiter
-		- (If Lexicon) is default lexicon?
+## Description
+Node.JS module to build simple N4 Framework modules.  
+For simple ressource modules which do not need java files or which not require a java compiler.  
+It also is able to extract original (english) lexicon files from N4 java modules and can create CSV-files for translation into different languages.  
+It can re-import translated CSV-files for building simple Lexicon modules for N4.  
 
-### Handle dependencies
-- dependency command
-- requires options
-	- name
-	- vendor
-	- vendorVersion
+## Instalation
+```bash
+npm i -g n4-simple-build
+```
 
-### Build
-- Build command
-- options:
-	- no-minify
+## Basic Usage
+Commands are following this format:
+```bash
+n4-simple-build <command> [options]
+```
 
-### Lexicon
-- Lexicon command
-	- Option: Base folder import
-	- Option: CSV Import
-	- Option: CSV Export
+### Get Help from Tool
+Get a full list of commands
 
-### Help
-- shows full list of commands
+```bash
+n4-simple-build --help
+```
+
+### Initialize Project
+For starting a new project, you can use the init command to initialize current working path.  
+This will create basic folders and files for later usage
+```bash
+n4-simple-build --init
+```
+
+### Build module
+```bash
+n4-simple-build --build
+```
+
+### Lexicon file handling
+Extracting base Lexicon files from installation directory of a N4-installation
+```bash
+n4-simple-build --lexicon --extract-base-files "C:\Brand\N4.x.x.x\modules"
+```
+Export CSV-files for every base module lexicon file
+```bash
+n4-simple-build --lexicon --csv-export
+```
+Import CSV-files into source folder
+```bash
+n4-simple-build --lexicon --csv-export
+```
 
 ## Folder strucutre
 ```
@@ -62,3 +80,6 @@ Root
 └───lex-import  --> CSV Import path
 
 ```
+
+## References
+
