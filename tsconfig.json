@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"lib": ["DOM", "ESNext" ],
+		"module": "CommonJS",
+		"outDir": "./dist",
+		"strict": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"declaration": true,
+		"allowJs": true,
+		"removeComments": false,
+		"rootDirs": [
+			"./",
+		]
+	},
+	"include": [
+		"./src/**/*"
+	],
+}
