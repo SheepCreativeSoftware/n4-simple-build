@@ -41,6 +41,7 @@
   "dependencies": {
     "buntstift": "^5.0.2",
     "command-line-args": "^5.2.1",
+    "command-line-usage": "^7.0.1",
     "fast-xml-parser": "^4.2.7",
     "iconv-lite": "^0.6.3",
     "minify": "^10.3.0"

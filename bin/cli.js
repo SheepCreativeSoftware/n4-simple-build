@@ -35,6 +35,10 @@ if(mainOptions.command === 'lexicon') {
 	if(lexiconOptions['extract-base-files']) return n4SimpleBuild.extractLexiconFiles({ searchPath: lexiconOptions['extract-base-files'] });
 	if(lexiconOptions['csv-export']) return n4SimpleBuild.lexiconCsvExport();
 	if(lexiconOptions['csv-import']) return n4SimpleBuild.lexiconCsvImport();
+
+	buntstift.error(`Option unknown or missing: ${JSON.stringify(lexiconOptions)}`);
+	return buntstift.info('Use "n4-simple-build --help" for usage information');
 }
 
-return buntstift.error('Command unknown or missing');
+buntstift.error(`Command unknown or missing: ${JSON.stringify(mainOptions)}`);
+return buntstift.info('Use "n4-simple-build --help" for usage information');
