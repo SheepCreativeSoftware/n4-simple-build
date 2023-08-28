@@ -1,11 +1,12 @@
 {
   "name": "n4-simple-build",
   "version": "0.0.1",
+  "copyright": "Copyright © 2023 Marina Egner",
   "description": "Simple N4 module build & Lexicon handling tool",
-  "main": "index.js",
+  "main": "dist/index.js",
   "module": "CommonJS",
   "bin": {
-    "n4-simple-build": "bin/ci.js"
+    "n4-simple-build": "bin/cli.js"
   },
   "scripts": {
     "start": "npm run bin/ci.js",

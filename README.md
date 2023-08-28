@@ -41,26 +41,26 @@ n4-simple-build --help
 For starting a new project, you can use the init command to initialize current working path.  
 This will create basic folders and files for later usage
 ```bash
-n4-simple-build --init
+n4-simple-build init
 ```
 
 ### Build module
 ```bash
-n4-simple-build --build
+n4-simple-build build
 ```
 
 ### Lexicon file handling
 Extracting base Lexicon files from installation directory of a N4-installation
 ```bash
-n4-simple-build --lexicon --extract-base-files "C:\Brand\N4.x.x.x\modules"
+n4-simple-build lexicon --extract-base-files "C:\Brand\N4.x.x.x\modules"
 ```
 Export CSV-files for every base module lexicon file
 ```bash
-n4-simple-build --lexicon --csv-export
+n4-simple-build lexicon --csv-export
 ```
 Import CSV-files into source folder
 ```bash
-n4-simple-build --lexicon --csv-export
+n4-simple-build lexicon --csv-export
 ```
 
 ## Folder strucutre
