@@ -5,11 +5,7 @@
  */
 
 import { buntstift } from 'buntstift';
-
-const getHelp = (): void => {
-	// ...
-	buntstift.verbose('Get Help');
-};
+import { getHelp } from './modules/cli/getHelp';
 
 const initProject = (): void => {
 	// ...

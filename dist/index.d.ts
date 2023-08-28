@@ -3,7 +3,7 @@
  * @copyright Copyright © 2023 Marina Egner
  * @module n4-simple-build
  */
-declare const getHelp: () => void;
+import { getHelp } from './modules/cli/getHelp';
 declare const initProject: () => void;
 declare const runBuild: () => void;
 declare const extractLexiconFiles: ({ searchPath }: {

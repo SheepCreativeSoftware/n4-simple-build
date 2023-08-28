@@ -7,11 +7,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.runBuild = exports.getHelp = exports.lexiconCsvImport = exports.lexiconCsvExport = exports.initProject = exports.extractLexiconFiles = void 0;
 const buntstift_1 = require("buntstift");
-const getHelp = () => {
-    // ...
-    buntstift_1.buntstift.verbose('Get Help');
-};
-exports.getHelp = getHelp;
+const getHelp_1 = require("./modules/cli/getHelp");
+Object.defineProperty(exports, "getHelp", { enumerable: true, get: function () { return getHelp_1.getHelp; } });
 const initProject = () => {
     // ...
     buntstift_1.buntstift.verbose('Init Project');

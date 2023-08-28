@@ -60,7 +60,7 @@ n4-simple-build lexicon --csv-export
 ```
 Import CSV-files into source folder
 ```bash
-n4-simple-build lexicon --csv-export
+n4-simple-build lexicon --csv-import
 ```
 
 ## Folder strucutre
