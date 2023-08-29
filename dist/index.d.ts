@@ -4,7 +4,7 @@
  * @module n4-simple-build
  */
 import { getHelp } from './modules/cli/getHelp';
-declare const initProject: () => void;
+import { initProject } from './modules/init/initProject';
 declare const runBuild: ({ minify }: {
     minify: boolean;
 }) => void;

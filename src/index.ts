@@ -6,13 +6,7 @@
 
 import { buntstift } from 'buntstift';
 import { getHelp } from './modules/cli/getHelp';
-import { initCliPromt } from './modules/init/initCliPromt';
-
-const initProject = (): void => {
-	// ...
-	buntstift.verbose('Init Project');
-	initCliPromt();
-};
+import { initProject } from './modules/init/initProject';
 
 const runBuild = ({ minify }: {
 	minify: boolean,
