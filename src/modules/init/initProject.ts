@@ -1,0 +1,6 @@
+
+const initProject = () => {
+	// ...
+};
+
+export { initProject };

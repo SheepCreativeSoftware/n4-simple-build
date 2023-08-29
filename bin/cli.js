@@ -21,7 +21,12 @@ if(argv.includes('--help')) return n4SimpleBuild.getHelp();
 
 if(mainOptions.command === 'init') return n4SimpleBuild.initProject();
 
-if(mainOptions.command === 'build') return n4SimpleBuild.runBuild();
+if(mainOptions.command === 'build') {
+	/* Second - parse the command options */
+	const buildDefinitions = [{ alias: 'm', name: 'no-minify', type: Boolean }];
+	const buildOptions = commandLineArgs(buildDefinitions, { argv });
+	return n4SimpleBuild.runBuild({ minify: buildOptions['no-minify'] === true });
+}
 
 if(mainOptions.command === 'lexicon') {
 	/* Second - parse the command options */
@@ -32,11 +37,13 @@ if(mainOptions.command === 'lexicon') {
 	];
 	const lexiconOptions = commandLineArgs(lexiconDefinitions, { argv });
 
+	const maxLexiconOptions = 1;
+	if(Object.keys(lexiconOptions).length > maxLexiconOptions) return buntstift.error(`To many options selected: ${JSON.stringify(argv)}`);
 	if(lexiconOptions['extract-base-files']) return n4SimpleBuild.extractLexiconFiles({ searchPath: lexiconOptions['extract-base-files'] });
 	if(lexiconOptions['csv-export']) return n4SimpleBuild.lexiconCsvExport();
 	if(lexiconOptions['csv-import']) return n4SimpleBuild.lexiconCsvImport();
 
-	buntstift.error(`Option unknown or missing: ${JSON.stringify(lexiconOptions)}`);
+	buntstift.error(`Option unknown or missing: ${JSON.stringify(argv)}`);
 	return buntstift.info('Use "n4-simple-build --help" for usage information');
 }
 

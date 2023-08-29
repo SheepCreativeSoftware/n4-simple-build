@@ -66,6 +66,7 @@ n4-simple-build lexicon --csv-import
 ## Folder strucutre
 ```
 Root
+├───buildConfig.json   --> Configuration of the project
 ├───.temp   --> Temporary folder
 ├───output  --> Output folder for finished jar-files
 ├───signed  --> Modules that have been signed

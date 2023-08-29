@@ -6,15 +6,20 @@
 
 import { buntstift } from 'buntstift';
 import { getHelp } from './modules/cli/getHelp';
+import { initCliPromt } from './modules/init/initCliPromt';
 
 const initProject = (): void => {
 	// ...
 	buntstift.verbose('Init Project');
+	initCliPromt();
 };
 
-const runBuild = (): void => {
+const runBuild = ({ minify }: {
+	minify: boolean,
+}): void => {
 	// ...
 	buntstift.verbose('Run Build');
+	buntstift.verbose(`Option minify ${minify}`);
 };
 
 const extractLexiconFiles = ({ searchPath }: {

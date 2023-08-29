@@ -5,7 +5,9 @@
  */
 import { getHelp } from './modules/cli/getHelp';
 declare const initProject: () => void;
-declare const runBuild: () => void;
+declare const runBuild: ({ minify }: {
+    minify: boolean;
+}) => void;
 declare const extractLexiconFiles: ({ searchPath }: {
     searchPath: string;
 }) => void;

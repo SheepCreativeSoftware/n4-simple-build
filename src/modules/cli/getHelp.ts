@@ -7,11 +7,20 @@
 import { buntstift } from 'buntstift';
 import commandLineUsage = require('command-line-usage');
 
+const buildOptions = [
+	{
+		alias: 'm',
+		description: 'Do not minify Web files',
+		name: 'no-minify',
+		type: Boolean,
+	},
+];
+
 const lexiconOptions = [
 	{
 		alias: 'b',
 		description: 'Extracting base Lexicon files from installation directory of a N4-installation',
-		name: 'extract-base-files ',
+		name: 'extract-base-files',
 		type: String,
 		typeLabel: '<file path>',
 	},
@@ -54,6 +63,10 @@ const getHelp = () => {
 				{ name: 'lexicon', summary: 'Lexicon related operations.' },
 			],
 			header: 'Command List',
+		},
+		{
+			header: 'Build Operation Options',
+			optionList: buildOptions,
 		},
 		{
 			header: 'Lexicon Operation Options',
