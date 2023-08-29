@@ -108,3 +108,13 @@ test/
 
 # Ignore source
 src/
+
+# Ignore created files from tool
+buildConfig.json
+.temp/
+output/
+signed/
+module/
+lex-base/
+lex-export/
+lex-import/

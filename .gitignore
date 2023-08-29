@@ -1,4 +1,8 @@
 node_modules/
+
+# Ignore created files from tool
+buildConfig.json
+.temp/
 output/
 signed/
 module/
