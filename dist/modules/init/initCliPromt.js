@@ -47,8 +47,16 @@ const initCliPromt = async () => {
         config.csv.delimiter = await buntstift_1.buntstift.ask('Delimiter for CSV files:', { default: config.csv.delimiter });
     }
     const twoSpaces = 2;
-    buntstift_1.buntstift.raw(JSON.stringify(config, null, twoSpaces));
-    buntstift_1.buntstift.info(buildConfigFilePath);
-    await (0, fs_extra_1.writeJSON)(buildConfigFilePath, config);
+    try {
+        await (0, fs_extra_1.writeJSON)(buildConfigFilePath, config, { spaces: twoSpaces });
+        throw new Error("Some");
+    }
+    catch (error) {
+        if (error instanceof Error) {
+            buntstift_1.buntstift.error(`Could not write config file: ${error.message}`);
+            if (error.stack)
+                buntstift_1.buntstift.error(error.stack);
+        }
+    }
 };
 exports.initCliPromt = initCliPromt;

@@ -55,9 +55,14 @@ const initCliPromt = async () => {
 
 
 	const twoSpaces = 2;
-	buntstift.raw(JSON.stringify(config, null, twoSpaces));
-	buntstift.info(buildConfigFilePath);
-	await writeJSON(buildConfigFilePath, config);
+	try {
+		await writeJSON(buildConfigFilePath, config, { spaces: twoSpaces });
+	} catch (error) {
+		if(error instanceof Error) {
+			buntstift.error(`Could not save config file: ${buildConfigFilePath}`);
+			if(error.stack) buntstift.error(error.stack);
+		}
+	}
 };
 
 export { initCliPromt };
