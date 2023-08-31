@@ -11,6 +11,6 @@ declare const runBuild: ({ minify }: {
 declare const extractLexiconFiles: ({ searchPath }: {
     searchPath: string;
 }) => void;
-declare const lexiconCsvExport: () => void;
+declare const lexiconCsvExport: () => Promise<void>;
 declare const lexiconCsvImport: () => void;
 export { extractLexiconFiles, initProject, lexiconCsvExport, lexiconCsvImport, getHelp, runBuild, };

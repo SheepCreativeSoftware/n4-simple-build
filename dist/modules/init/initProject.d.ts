@@ -1,2 +1,2 @@
-declare const initProject: () => void;
+declare const initProject: () => Promise<void>;
 export { initProject };

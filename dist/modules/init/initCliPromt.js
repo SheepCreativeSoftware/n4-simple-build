@@ -1,25 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initCliPromt = void 0;
-const fs_extra_1 = require("fs-extra");
-const basicModuleConfig_1 = require("./basicModuleConfig");
 const buntstift_1 = require("buntstift");
-const path = require("path");
-const buildConfigFilePath = path.resolve('./', 'buildConfig.json');
-/** Read existing config or provide a default */
-const checkExistingConfig = async () => {
-    try {
-        const config = await (0, fs_extra_1.readJSON)(buildConfigFilePath);
-        return config;
-    }
-    catch {
-        return basicModuleConfig_1.baseConfig;
-    }
-};
 /** Promts to the user via CLI to configure the project */
-const initCliPromt = async () => {
-    buntstift_1.buntstift.header('Initialize Module');
-    const config = await checkExistingConfig();
+const initCliPromt = async ({ config }) => {
     // Ask user for specific settings of the Project
     config.modules.name = await buntstift_1.buntstift.ask('Name for the module:', { default: config.modules.name });
     config.vendor = await buntstift_1.buntstift.ask('Vendor of the module:', { default: config.vendor });
@@ -46,17 +30,6 @@ const initCliPromt = async () => {
         config.csv.encoding = await buntstift_1.buntstift.ask('Encoding for CSV files:', { default: config.csv.encoding });
         config.csv.delimiter = await buntstift_1.buntstift.ask('Delimiter for CSV files:', { default: config.csv.delimiter });
     }
-    const twoSpaces = 2;
-    try {
-        await (0, fs_extra_1.writeJSON)(buildConfigFilePath, config, { spaces: twoSpaces });
-        throw new Error("Some");
-    }
-    catch (error) {
-        if (error instanceof Error) {
-            buntstift_1.buntstift.error(`Could not write config file: ${error.message}`);
-            if (error.stack)
-                buntstift_1.buntstift.error(error.stack);
-        }
-    }
+    return config;
 };
 exports.initCliPromt = initCliPromt;
