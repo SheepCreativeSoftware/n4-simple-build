@@ -52,7 +52,7 @@ n4-simple-build build
 ### Lexicon file handling
 Extracting base Lexicon files from installation directory of a N4-installation
 ```bash
-n4-simple-build lexicon --extract-base-files "C:\Brand\N4.x.x.x\modules"
+n4-simple-build lexicon --extract-base-files "C:/Brand/N4.x.x.x/modules"
 ```
 Export CSV-files for every base module lexicon file
 ```bash
