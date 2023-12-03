@@ -124,3 +124,4 @@ Roadmap.md
 changelog.md
 tsconfig.json
 .vscode/
+.testing/
