@@ -8,6 +8,7 @@ const path = require("path");
 const createBasicFolders = async ({ config }) => {
     try {
         buntstift_1.buntstift.info('Create Basic folder structure');
+        // Create this folder before everything else to avoid conflicts
         await fse.ensureDir(path.resolve(process.cwd(), config.baseFolder));
         await Promise.all([
             fse.ensureDir(path.resolve(process.cwd(), '.temp')),
