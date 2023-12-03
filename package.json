@@ -1,15 +1,15 @@
 {
   "name": "n4-simple-build",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "copyright": "Copyright © 2023 Marina Egner",
   "description": "Simple N4 module build & Lexicon handling tool",
   "main": "dist/index.js",
   "module": "CommonJS",
   "bin": {
-    "n4-simple-build": "bin/cli.js"
+    "n4-simple-build": "/bin/cli.js"
   },
   "scripts": {
-    "start": "npm run bin/ci.js",
+    "start": "npm run bin/cli.js",
     "test": "mocha dist/ --recursive"
   },
   "repository": {
@@ -17,7 +17,7 @@
     "url": "git+https://github.com/SheepCreativeSoftware/n4-simple-build.git"
   },
   "keywords": [
-    "ci",
+    "cli",
     "niagara",
     "n4",
     "build",
