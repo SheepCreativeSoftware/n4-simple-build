@@ -1,6 +1,6 @@
 import { BaseModuleConfig } from './BaseModuleConfig';
 interface LexiconModuleConfig extends BaseModuleConfig {
     type: 'Lexicon';
-    relativLexiconBasePath: string;
+    relativeLexiconBasePath: string;
 }
 export { LexiconModuleConfig };
