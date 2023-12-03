@@ -118,3 +118,9 @@ module/
 lex-base/
 lex-export/
 lex-import/
+
+# Ignore unnecessary files
+Roadmap.md
+changelog.md
+tsconfig.json
+.vscode/
