@@ -31,8 +31,6 @@ const readWriteConfig = async (mode, options) => {
             buntstift_1.buntstift.info(returnValue);
         if (Array.isArray(returnValue) && returnValue.length >= atLeastOne)
             buntstift_1.buntstift.table(returnValue);
-        if (Array.isArray(returnValue) && returnValue.length < atLeastOne)
-            buntstift_1.buntstift.verbose('List is empty');
         return Promise.resolve(returnValue);
     }
     catch (error) {

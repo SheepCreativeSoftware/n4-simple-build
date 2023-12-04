@@ -14,16 +14,16 @@ const configAddOptions = [
 		name: 'dependency',
 		type: Boolean,
 	},
-];
+] as commandLineUsage.OptionDefinition[];
 
 const configSetOptions = [
 	{
 		alias: 'v',
 		description: 'Change the version of the module',
 		name: 'version',
-		type: String,
+		type: Boolean,
 	},
-];
+] as commandLineUsage.OptionDefinition[];
 
 const configRmOptions = [
 	{
@@ -32,7 +32,7 @@ const configRmOptions = [
 		name: 'dependency',
 		type: Boolean,
 	},
-];
+] as commandLineUsage.OptionDefinition[];
 
 const configLsOptions = [
 	{
@@ -41,7 +41,7 @@ const configLsOptions = [
 		name: 'dependency',
 		type: Boolean,
 	},
-];
+] as commandLineUsage.OptionDefinition[];
 
 const buildOptions = [
 	{
@@ -50,7 +50,7 @@ const buildOptions = [
 		name: 'no-minify',
 		type: Boolean,
 	},
-];
+] as commandLineUsage.OptionDefinition[];
 
 const lexiconOptions = [
 	{

@@ -21,7 +21,7 @@ const configSetOptions = [
         alias: 'v',
         description: 'Change the version of the module',
         name: 'version',
-        type: String,
+        type: Boolean,
     },
 ];
 const configRmOptions = [

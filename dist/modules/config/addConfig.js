@@ -4,6 +4,7 @@ exports.addConfig = void 0;
 const fse = require("fs-extra");
 const buntstift_1 = require("buntstift");
 const path = require("path");
+const twoSpaces = 2;
 const addDependency = async () => {
     const moduleName = await buntstift_1.buntstift.ask('Name for the module:', { default: 'someModule' });
     const vendor = await buntstift_1.buntstift.ask('Vendor of the module:', { default: 'The Company' });
@@ -23,7 +24,7 @@ const addDependency = async () => {
         moduleMetaFile.module.dependencies.dependency.push(newDependency);
     if (typeof moduleMetaFile.module.dependencies.dependency === 'undefined')
         moduleMetaFile.module.dependencies.dependency = [newDependency];
-    await fse.writeJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json'), moduleMetaFile);
+    await fse.writeJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json'), moduleMetaFile, { spaces: twoSpaces });
 };
 const addConfig = (options) => {
     if (options.dependency)
