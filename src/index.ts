@@ -9,6 +9,7 @@ import { getExistingConfig } from './modules/config/storeConfig';
 import { getHelp } from './modules/cli/getHelp';
 import { importCSV } from './modules/csv/importCsv';
 import { initProject } from './modules/init/initProject';
+import { listConfig } from './modules/config/listConfig';
 
 const runBuild = ({ minify }: {
 	minify: boolean,
@@ -44,4 +45,5 @@ export {
 	lexiconCsvImport,
 	getHelp,
 	runBuild,
+	listConfig,
 };
