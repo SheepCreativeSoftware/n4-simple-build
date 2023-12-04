@@ -1,7 +1,7 @@
 
 
 ## Todo
-- Executable global via node
+-[X] Executable global via node
 - Only one module per folder instance (That's clearer)
 - First implement Lexicon module builder
 - Try to use commonjs (pkg would be possible)
@@ -21,7 +21,7 @@
 		- (If Lexicon) is default lexicon?
 
 ### Handle dependencies
-- dependency command
+-[X] dependency command
 - requires options
 	- name
 	- vendor
@@ -30,7 +30,7 @@
 ### Build
 - Build command
 - options:
-	- no-minify
+	- no-minify (UX only)
 
 ### Lexicon
 - Lexicon command
