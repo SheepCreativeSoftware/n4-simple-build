@@ -38,11 +38,12 @@ exports.getExistingConfig = getExistingConfig;
 const writeBuildConfig = async ({ config }) => {
     const twoSpaces = 2;
     try {
+        buntstift_1.buntstift.list('Save build config file');
         await (0, fs_extra_1.writeJSON)(buildConfigFilePath, config, { spaces: twoSpaces });
     }
     catch (error) {
         if (error instanceof Error) {
-            buntstift_1.buntstift.error(`Could not save config file: ${buildConfigFilePath}`);
+            buntstift_1.buntstift.error(`Could not save build config file: ${buildConfigFilePath}`);
             if (error.stack)
                 buntstift_1.buntstift.error(error.stack);
         }

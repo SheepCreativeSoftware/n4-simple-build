@@ -19,8 +19,8 @@ const createBasicFolders = async ({ config }: {
 			fse.ensureDir(path.resolve(process.cwd(), config.outputPath)),
 			fse.ensureDir(path.resolve(process.cwd(), 'signed')),
 			fse.ensureDir(path.resolve(process.cwd(), config.buildPath)),
-			fse.ensureDir(path.resolve(process.cwd(), config.baseFolder, 'rc')),
-			fse.ensureDir(path.resolve(process.cwd(), config.baseFolder, 'META-INF')),
+			fse.ensureDir(path.resolve(process.cwd(), 'module', 'rc')),
+			fse.ensureDir(path.resolve(process.cwd(), 'module', 'META-INF')),
 		]);
 		if(config.modules.type === 'Lexicon') {
 			await Promise.all([

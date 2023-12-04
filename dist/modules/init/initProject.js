@@ -4,14 +4,17 @@ exports.initProject = void 0;
 const storeConfig_1 = require("../config/storeConfig");
 const buntstift_1 = require("buntstift");
 const createBasicFolders_1 = require("./createBasicFolders");
+const createModuleMeta_1 = require("./createModuleMeta");
 const initCliPromt_1 = require("./initCliPromt");
 const initProject = async () => {
     try {
         buntstift_1.buntstift.header('Initialize Module');
         const config = await (0, storeConfig_1.getExistingOrNewConfig)();
         const newConfig = await (0, initCliPromt_1.initCliPromt)({ config });
+        buntstift_1.buntstift.line();
         await (0, storeConfig_1.writeBuildConfig)({ config: newConfig });
         await (0, createBasicFolders_1.createBasicFolders)({ config: newConfig });
+        await (0, createModuleMeta_1.createModuleMeta)({ config: newConfig });
     }
     catch (error) {
         buntstift_1.buntstift.error('Init failed!');
