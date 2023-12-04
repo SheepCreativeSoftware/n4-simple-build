@@ -5,7 +5,7 @@
  * @module n4-simple-build
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.listConfig = exports.runBuild = exports.getHelp = exports.lexiconCsvImport = exports.lexiconCsvExport = exports.initProject = exports.extractLexiconFiles = void 0;
+exports.readWriteConfig = exports.listConfig = exports.runBuild = exports.getHelp = exports.lexiconCsvImport = exports.lexiconCsvExport = exports.initProject = exports.extractLexiconFiles = void 0;
 const buntstift_1 = require("buntstift");
 const storeConfig_1 = require("./modules/config/storeConfig");
 const getHelp_1 = require("./modules/cli/getHelp");
@@ -15,6 +15,8 @@ const initProject_1 = require("./modules/init/initProject");
 Object.defineProperty(exports, "initProject", { enumerable: true, get: function () { return initProject_1.initProject; } });
 const listConfig_1 = require("./modules/config/listConfig");
 Object.defineProperty(exports, "listConfig", { enumerable: true, get: function () { return listConfig_1.listConfig; } });
+const readWriteConfig_1 = require("./modules/config/readWriteConfig");
+Object.defineProperty(exports, "readWriteConfig", { enumerable: true, get: function () { return readWriteConfig_1.readWriteConfig; } });
 const runBuild = ({ minify }) => {
     // ...
     buntstift_1.buntstift.verbose('Run Build');

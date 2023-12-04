@@ -10,6 +10,7 @@ import { getHelp } from './modules/cli/getHelp';
 import { importCSV } from './modules/csv/importCsv';
 import { initProject } from './modules/init/initProject';
 import { listConfig } from './modules/config/listConfig';
+import { readWriteConfig } from './modules/config/readWriteConfig';
 
 const runBuild = ({ minify }: {
 	minify: boolean,
@@ -46,4 +47,5 @@ export {
 	getHelp,
 	runBuild,
 	listConfig,
+	readWriteConfig,
 };

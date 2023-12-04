@@ -22,14 +22,14 @@ if(argv.includes('--help')) return n4SimpleBuild.getHelp();
 
 if(mainOptions.command === 'init') return n4SimpleBuild.initProject();
 
-if(mainOptions.command === 'set') {
+if(mainOptions.command === 'config-set') {
 	/* Second - parse the command options */
-	const setDefinitions = [{ alias: 'v', name: 'version', type: String }];
+	const setDefinitions = [{ alias: 'v', name: 'version', type: Boolean }];
 	const setOptions = commandLineArgs(setDefinitions, { argv });
 
 	const maxSetOptions = 1;
 	if(Object.keys(setOptions).length > maxSetOptions) return buntstift.error(`To many options selected: ${JSON.stringify(argv)}`);
-	if(setOptions.version) return n4SimpleBuild.setConfig({ version: setOptions.version });
+	if(setOptions.version) return n4SimpleBuild.readWriteConfig('SET', { version: setOptions.version });
 	buntstift.error(`Option unknown or missing: ${JSON.stringify(argv)}`);
 	return buntstift.info('Use "n4-simple-build --help" for usage information');
 }
@@ -41,7 +41,7 @@ if(mainOptions.command === 'config-add') {
 
 	const maxAddOptions = 1;
 	if(Object.keys(addOptions).length > maxAddOptions) return buntstift.error(`To many options selected: ${JSON.stringify(argv)}`);
-	if(addOptions.dependency) return n4SimpleBuild.addConfig({ dependency: addOptions.dependency });
+	if(addOptions.dependency) return n4SimpleBuild.readWriteConfig('ADD', { dependency: addOptions.dependency });
 	buntstift.error(`Option unknown or missing: ${JSON.stringify(argv)}`);
 	return buntstift.info('Use "n4-simple-build --help" for usage information');
 }
@@ -53,7 +53,7 @@ if(mainOptions.command === 'config-rm') {
 
 	const maxRmOptions = 1;
 	if(Object.keys(rmOptions).length > maxRmOptions) return buntstift.error(`To many options selected: ${JSON.stringify(argv)}`);
-	if(rmOptions.dependency) return n4SimpleBuild.removeConfig({ dependency: rmOptions.dependency });
+	if(rmOptions.dependency) return n4SimpleBuild.readWriteConfig('RM', { dependency: rmOptions.dependency });
 	buntstift.error(`Option unknown or missing: ${JSON.stringify(argv)}`);
 	return buntstift.info('Use "n4-simple-build --help" for usage information');
 }
@@ -65,7 +65,7 @@ if(mainOptions.command === 'config-ls') {
 
 	const maxLsOptions = 1;
 	if(Object.keys(lsOptions).length > maxLsOptions) return buntstift.error(`To many options selected: ${JSON.stringify(argv)}`);
-	if(lsOptions.dependency) return n4SimpleBuild.listConfig({ dependency: lsOptions.dependency });
+	if(lsOptions.dependency) return n4SimpleBuild.readWriteConfig('LIST', { dependency: lsOptions.dependency });
 	buntstift.error(`Option unknown or missing: ${JSON.stringify(argv)}`);
 	return buntstift.info('Use "n4-simple-build --help" for usage information');
 }

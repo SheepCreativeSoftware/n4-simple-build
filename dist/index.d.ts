@@ -6,6 +6,7 @@
 import { getHelp } from './modules/cli/getHelp';
 import { initProject } from './modules/init/initProject';
 import { listConfig } from './modules/config/listConfig';
+import { readWriteConfig } from './modules/config/readWriteConfig';
 declare const runBuild: ({ minify }: {
     minify: boolean;
 }) => void;
@@ -14,4 +15,4 @@ declare const extractLexiconFiles: ({ searchPath }: {
 }) => void;
 declare const lexiconCsvExport: () => Promise<void>;
 declare const lexiconCsvImport: () => void;
-export { extractLexiconFiles, initProject, lexiconCsvExport, lexiconCsvImport, getHelp, runBuild, listConfig, };
+export { extractLexiconFiles, initProject, lexiconCsvExport, lexiconCsvImport, getHelp, runBuild, listConfig, readWriteConfig, };

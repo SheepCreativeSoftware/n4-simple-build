@@ -3,39 +3,30 @@ import { buntstift } from 'buntstift';
 import { ModuleMetaFile } from '../../interfaces/moduleMeta/ModuleMetaFile';
 import path = require('path');
 
-
 const listDependencies = async () => {
-	try {
-		const moduleMetaFile = await fse.readJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json')) as ModuleMetaFile;
-		if(typeof moduleMetaFile.module.dependencies.dependency === 'undefined') {
-			buntstift.verbose('No dependecies defined');
-			return Promise.resolve();
-		}
-		buntstift.header('Dependencies');
-		const thatDependencies = [];
-		for(const dependency of moduleMetaFile.module.dependencies.dependency) {
-			thatDependencies.push({
-				name: dependency['@'].name,
-				vendor: dependency['@'].vendor,
-				'vendor-version': dependency['@'].vendorVersion,
-			});
-		}
-		buntstift.table(thatDependencies);
-		return Promise.resolve();
-	} catch (error) {
-		if(error instanceof Error) {
-			buntstift.error('Could not load list');
-			if(error.stack) buntstift.error(error.stack);
-		}
-		return Promise.reject(error);
+	const moduleMetaFile = await fse.readJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json')) as ModuleMetaFile;
+	if(typeof moduleMetaFile.module.dependencies.dependency === 'undefined') {
+		buntstift.verbose('No dependecies defined');
+		return Promise.resolve([]);
 	}
+
+	const thatDependencies = [];
+	for(const dependency of moduleMetaFile.module.dependencies.dependency) {
+		thatDependencies.push({
+			name: dependency['@'].name,
+			vendor: dependency['@'].vendor,
+			'vendor-version': dependency['@'].vendorVersion,
+		});
+	}
+
+	return Promise.resolve(thatDependencies);
 };
 
-
-const listConfig = async ({ dependency }: {
+const listConfig = (options: {
 	dependency?: boolean,
 }) => {
-	if(dependency) await listDependencies();
+	if(options.dependency) return listDependencies();
+	return Promise.reject(Error('Option not available'));
 };
 
 export { listConfig };

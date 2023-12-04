@@ -1,4 +1,8 @@
-declare const listConfig: ({ dependency }: {
-    dependency?: boolean | undefined;
-}) => Promise<void>;
+declare const listConfig: (options: {
+    dependency?: boolean;
+}) => Promise<{
+    name: string;
+    vendor: string;
+    'vendor-version': string;
+}[]>;
 export { listConfig };
