@@ -7,6 +7,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.readWriteConfig = exports.listConfig = exports.runBuild = exports.getHelp = exports.lexiconCsvImport = exports.lexiconCsvExport = exports.initProject = exports.extractLexiconFiles = void 0;
 const buntstift_1 = require("buntstift");
+const exportCSV_1 = require("./modules/csv/exportCSV");
 const storeConfig_1 = require("./modules/config/storeConfig");
 const getHelp_1 = require("./modules/cli/getHelp");
 Object.defineProperty(exports, "getHelp", { enumerable: true, get: function () { return getHelp_1.getHelp; } });
@@ -30,13 +31,12 @@ const extractLexiconFiles = ({ searchPath }) => {
 };
 exports.extractLexiconFiles = extractLexiconFiles;
 const lexiconCsvExport = async () => {
-    // ...
     const config = await (0, storeConfig_1.getExistingConfig)();
-    await (0, importCsv_1.importCSV)({ config });
+    await (0, exportCSV_1.exportCSV)({ config });
 };
 exports.lexiconCsvExport = lexiconCsvExport;
-const lexiconCsvImport = () => {
-    // ...
-    buntstift_1.buntstift.verbose('Lexicon CSV Import');
+const lexiconCsvImport = async () => {
+    const config = await (0, storeConfig_1.getExistingConfig)();
+    await (0, importCsv_1.importCSV)({ config });
 };
 exports.lexiconCsvImport = lexiconCsvImport;

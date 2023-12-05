@@ -14,5 +14,5 @@ declare const extractLexiconFiles: ({ searchPath }: {
     searchPath: string;
 }) => void;
 declare const lexiconCsvExport: () => Promise<void>;
-declare const lexiconCsvImport: () => void;
+declare const lexiconCsvImport: () => Promise<void>;
 export { extractLexiconFiles, initProject, lexiconCsvExport, lexiconCsvImport, getHelp, runBuild, listConfig, readWriteConfig, };
