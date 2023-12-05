@@ -5,6 +5,7 @@
  */
 
 import { buntstift } from 'buntstift';
+import { exportCSV } from './modules/csv/exportCSV';
 import { getExistingConfig } from './modules/config/storeConfig';
 import { getHelp } from './modules/cli/getHelp';
 import { importCSV } from './modules/csv/importCsv';
@@ -29,14 +30,13 @@ const extractLexiconFiles = ({ searchPath }: {
 };
 
 const lexiconCsvExport = async (): Promise<void> => {
-	// ...
 	const config = await getExistingConfig();
-	await importCSV({ config });
+	await exportCSV({ config });
 };
 
-const lexiconCsvImport = (): void => {
-	// ...
-	buntstift.verbose('Lexicon CSV Import');
+const lexiconCsvImport = async (): Promise<void> => {
+	const config = await getExistingConfig();
+	await importCSV({ config });
 };
 
 export {
