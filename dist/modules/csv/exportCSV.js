@@ -22,13 +22,13 @@ const exportCSV = async function ({ config }) {
         lexiconExtension: lexicon.extension,
     });
     // Process each of the base files
-    for (let indexBase = 0; indexBase < lexFiles.length; indexBase++) {
+    for (const lexFile of lexFiles) {
         // Get data from base file and store it as default language
-        const lexFile = lexFiles[indexBase];
         buntstift_1.buntstift.info('- Load base lexicon file: ' + lexFile);
         const baseLexiconData = await (0, copyFiles_1.readFile)(path.resolve(baseFilePath, lexFile), { encoding: lexicon.encoding });
         const lexiconObject = {};
         (0, lexFileToObject_1.lexFileToObject)({ language: lexicon.defaultLang, lexFile: baseLexiconData, lexiconObject });
+        // Evaluate language folders and load the
         buntstift_1.buntstift.info('- Load lexicon files from module');
         const moduleFolder = path.resolve(process.cwd(), baseFolder);
         const languages = await (0, getLanguageFolders_1.getLanguageFolders)({ defaultLang: lexicon.defaultLang, moduleFolder });

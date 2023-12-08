@@ -29,14 +29,14 @@ const exportCSV = async function({ config }: {
 	});
 
 	// Process each of the base files
-	for(let indexBase = 0; indexBase < lexFiles.length; indexBase++) {
+	for(const lexFile of lexFiles) {
 		// Get data from base file and store it as default language
-		const lexFile = lexFiles[indexBase];
 		buntstift.info('- Load base lexicon file: ' + lexFile);
 		const baseLexiconData = await readFile(path.resolve(baseFilePath, lexFile), { encoding: lexicon.encoding });
 		const lexiconObject = {} as LexiconObject;
 		lexFileToObject({ language: lexicon.defaultLang, lexFile: baseLexiconData, lexiconObject });
 
+		// Evaluate language folders and load the
 		buntstift.info('- Load lexicon files from module');
 		const moduleFolder = path.resolve(process.cwd(), baseFolder);
 		const languages = await getLanguageFolders({ defaultLang: lexicon.defaultLang, moduleFolder });
