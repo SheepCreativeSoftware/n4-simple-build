@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.exportCSV = void 0;
-const copyFiles_1 = require("../misc/copyFiles");
+const copyFiles_1 = require("../../misc/copyFiles");
 const buntstift_1 = require("buntstift");
 const createCsvOutput_1 = require("./createCsvOutput");
 const getLanguageFolders_1 = require("./getLanguageFolders");

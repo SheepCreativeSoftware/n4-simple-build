@@ -1,4 +1,4 @@
-import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig';
+import { BuildConfig } from '../../../interfaces/BuildConfig/BuildConfig';
 declare const exportCSV: ({ config }: {
     config: BuildConfig;
 }) => Promise<void>;

@@ -1,8 +1,8 @@
-import { readFile, writeFile } from '../misc/copyFiles';
-import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig';
+import { readFile, writeFile } from '../../misc/copyFiles';
+import { BuildConfig } from '../../../interfaces/BuildConfig/BuildConfig';
 import { buntstift } from 'buntstift';
 import { convertCsvData } from './convertCsvData';
-import { searchForFiles } from '../misc/searchFiles';
+import { searchForFiles } from '../../misc/searchFiles';
 import path = require('path');
 
 

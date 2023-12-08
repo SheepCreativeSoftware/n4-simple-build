@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.lexFileToObject = void 0;
-const unescapeString_1 = require("../misc/unescapeString");
+const unescapeString_1 = require("../../misc/unescapeString");
 const firstCharacter = 0;
 const afterDelimiter = 1;
 const lexFileToObject = function ({ lexiconObject, lexFile, language }) {

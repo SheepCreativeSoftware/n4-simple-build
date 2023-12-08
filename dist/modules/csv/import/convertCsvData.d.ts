@@ -1,6 +1,6 @@
-import { CsvFileConfig } from '../../interfaces/BuildConfig/CsvFileConfig';
-import { LexiconFileConfig } from '../../interfaces/BuildConfig/LexiconFileConfig';
-import { LexiconModuleConfig } from '../../interfaces/BuildConfig/LexiconModuleConfig';
+import { CsvFileConfig } from '../../../interfaces/BuildConfig/CsvFileConfig';
+import { LexiconFileConfig } from '../../../interfaces/BuildConfig/LexiconFileConfig';
+import { LexiconModuleConfig } from '../../../interfaces/BuildConfig/LexiconModuleConfig';
 /** Converts the CSV data into separate data sets for each language */
 declare const convertCsvData: ({ csvFile, lexicon, csv, modules }: {
     /** File data from csv file */

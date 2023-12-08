@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.importCSV = void 0;
-const copyFiles_1 = require("../misc/copyFiles");
+const copyFiles_1 = require("../../misc/copyFiles");
 const buntstift_1 = require("buntstift");
 const convertCsvData_1 = require("./convertCsvData");
-const searchFiles_1 = require("../misc/searchFiles");
+const searchFiles_1 = require("../../misc/searchFiles");
 const path = require("path");
 const importCSV = async ({ config }) => {
     buntstift_1.buntstift.header('Start import CSV process');

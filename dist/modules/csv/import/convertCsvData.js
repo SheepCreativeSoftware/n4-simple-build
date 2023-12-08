@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.convertCsvData = void 0;
-const escapeString_1 = require("../misc/escapeString");
-const getDate_1 = require("../misc/getDate");
-const getFileLineEnding_1 = require("../misc/getFileLineEnding");
+const escapeString_1 = require("../../misc/escapeString");
+const getDate_1 = require("../../misc/getDate");
+const getFileLineEnding_1 = require("../../misc/getFileLineEnding");
 const startWithThirdRow = 2;
 const startAfterHeader = 1;
 const startAtBegining = 2;

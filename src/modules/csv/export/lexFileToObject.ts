@@ -1,5 +1,5 @@
-import { LexiconObject } from '../../interfaces/Lexicon/LexiconObject';
-import { unescapeString } from '../misc/unescapeString';
+import { LexiconObject } from '../../../interfaces/Lexicon/LexiconObject';
+import { unescapeString } from '../../misc/unescapeString';
 
 const firstCharacter = 0;
 const afterDelimiter = 1;
