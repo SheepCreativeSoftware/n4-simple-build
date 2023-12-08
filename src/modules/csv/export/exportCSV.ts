@@ -1,11 +1,11 @@
 
-import { readFile, writeFile } from '../misc/copyFiles';
-import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig';
+import { readFile, writeFile } from '../../misc/copyFiles';
+import { BuildConfig } from '../../../interfaces/BuildConfig/BuildConfig';
 import { buntstift } from 'buntstift';
 import { createCsvOutput } from './createCsvOutput';
 import { getLanguageFolders } from './getLanguageFolders';
 import { lexFileToObject } from './lexFileToObject';
-import { LexiconObject } from '../../interfaces/Lexicon/LexiconObject';
+import { LexiconObject } from '../../../interfaces/Lexicon/LexiconObject';
 import { searchLexiconBaseFiles } from './searchLexiconBaseFiles';
 import path = require('path');
 

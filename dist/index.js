@@ -7,11 +7,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.readWriteConfig = exports.listConfig = exports.runBuild = exports.getHelp = exports.lexiconCsvImport = exports.lexiconCsvExport = exports.initProject = exports.extractLexiconFiles = void 0;
 const buntstift_1 = require("buntstift");
-const exportCSV_1 = require("./modules/csv/exportCSV");
+const exportCSV_1 = require("./modules/csv/export/exportCSV");
 const storeConfig_1 = require("./modules/config/storeConfig");
 const getHelp_1 = require("./modules/cli/getHelp");
 Object.defineProperty(exports, "getHelp", { enumerable: true, get: function () { return getHelp_1.getHelp; } });
-const importCsv_1 = require("./modules/csv/importCsv");
+const importCsv_1 = require("./modules/csv/import/importCsv");
 const initProject_1 = require("./modules/init/initProject");
 Object.defineProperty(exports, "initProject", { enumerable: true, get: function () { return initProject_1.initProject; } });
 const listConfig_1 = require("./modules/config/listConfig");
