@@ -1,4 +1,4 @@
-import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig';
+import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig.js';
 /** Read existing config or provide a new default config */
 declare const getExistingOrNewConfig: () => Promise<BuildConfig>;
 /** Read existing config or provide a new default config */

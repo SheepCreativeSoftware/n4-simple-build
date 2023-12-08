@@ -1,4 +1,4 @@
-import { VersionPattern } from '../../types/VersionPattern';
+import { VersionPattern } from '../../types/VersionPattern.js';
 interface BaseModuleConfig {
     buildVersion: number;
     description: string;

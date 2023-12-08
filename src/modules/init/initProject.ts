@@ -1,8 +1,8 @@
-import { getExistingOrNewConfig, writeBuildConfig } from '../config/storeConfig';
+import { getExistingOrNewConfig, writeBuildConfig } from '../config/storeConfig.js';
 import { buntstift } from 'buntstift';
-import { createBasicFolders } from './createBasicFolders';
-import { createModuleMeta } from './createModuleMeta';
-import { initCliPromt } from './initCliPromt';
+import { createBasicFolders } from './createBasicFolders.js';
+import { createModuleMeta } from './createModuleMeta.js';
+import { initCliPromt } from './initCliPromt.js';
 
 const initProject = async (): Promise<void> => {
 	try {

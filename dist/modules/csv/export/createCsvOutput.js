@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createCsvOutput = void 0;
 const createCsvOutput = function (lexiconObject, languages, csv) {
     let csvFile = 'key' + csv.delimiter;
     languages.forEach((language) => {
@@ -22,4 +19,4 @@ const createCsvOutput = function (lexiconObject, languages, csv) {
     });
     return csvFile;
 };
-exports.createCsvOutput = createCsvOutput;
+export { createCsvOutput };

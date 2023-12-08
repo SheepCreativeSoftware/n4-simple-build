@@ -1,7 +1,7 @@
-import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig';
+import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig.js';
 import { buntstift } from 'buntstift';
-import { ModuleType } from '../../types/ModuleType';
-import { VersionPattern } from '../../types/VersionPattern';
+import { ModuleType } from '../../types/ModuleType.js';
+import { VersionPattern } from '../../types/VersionPattern.js';
 
 /** Promts to the user via CLI to configure the project */
 const initCliPromt = async ({ config }: {

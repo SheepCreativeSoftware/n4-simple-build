@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCurrentDateTimeString = exports.getCurrentDateString = void 0;
 /**
  * Adds a leading zero to numbers below 10 and converst to string
  * @returns converted string number
@@ -23,9 +20,8 @@ const getCurrentDateString = function () {
     const currentDay = addLeadingZero(dateNow.getUTCDate());
     return `${currentYear}-${currentMonth}-${currentDay}`;
 };
-exports.getCurrentDateString = getCurrentDateString;
 const getCurrentDateTimeString = function () {
     const dateNow = new Date();
     return dateNow.toISOString();
 };
-exports.getCurrentDateTimeString = getCurrentDateTimeString;
+export { getCurrentDateString, getCurrentDateTimeString };

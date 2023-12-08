@@ -1,15 +1,15 @@
-import * as fse from 'fs-extra';
+import * as fs from 'fs/promises';
 
 /** Search base files and store their name in an array if they are lexicons */
-const searchLexiconBaseFiles = async ({ baseFilePath, lexiconExtension }: {
+const searchLexiconFiles = async ({ baseFilePath, lexiconExtension }: {
 	baseFilePath: string,
 	lexiconExtension: string,
 }): Promise<string[]> => {
-	const baseFiles = await fse.readdir(baseFilePath);
+	const baseFiles = await fs.readdir(baseFilePath);
 	const lexFiles = [] as string[];
 	for(const file of baseFiles) if(file.includes(`.${lexiconExtension}`)) lexFiles.push(file);
 
 	return lexFiles;
 };
 
-export { searchLexiconBaseFiles };
+export { searchLexiconFiles };

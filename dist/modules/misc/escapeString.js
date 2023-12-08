@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.escapeString = void 0;
-const characterConversion_1 = require("./characterConversion");
+import { charToUnicodePoint } from './characterConversion.js';
 const backSlash = '\\';
 /**
  * Escapes a string with '\uXXXX'-Escapes
@@ -16,15 +13,15 @@ const escapeString = function ({ text }) {
     const uniqueChars = new Set(allSpecialCharacters);
     // Eliminate escape character (backslash) first as the convertion will create backslashes
     if (uniqueChars.has(backSlash)) {
-        const unicodePointForBackSlash = (0, characterConversion_1.charToUnicodePoint)({ character: backSlash });
+        const unicodePointForBackSlash = charToUnicodePoint({ character: backSlash });
         escapedText = escapedText.replaceAll(backSlash, unicodePointForBackSlash);
         uniqueChars.delete(backSlash);
     }
     // Then escape all special characters
     uniqueChars.forEach((character) => {
-        const unicodePoint = (0, characterConversion_1.charToUnicodePoint)({ character });
+        const unicodePoint = charToUnicodePoint({ character });
         escapedText = escapedText.replaceAll(character, unicodePoint);
     });
     return escapedText;
 };
-exports.escapeString = escapeString;
+export { escapeString };

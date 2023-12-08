@@ -1,4 +1,4 @@
-import { charToUnicodePoint } from './characterConversion';
+import { charToUnicodePoint } from './characterConversion.js';
 
 const backSlash = '\\';
 

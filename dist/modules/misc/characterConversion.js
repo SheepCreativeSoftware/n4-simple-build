@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.charToUnicodePoint = void 0;
 const charOffset = 0;
 const toHex = 16;
 const firstCharacter = 0;
@@ -12,4 +9,4 @@ const charToUnicodePoint = function ({ character }) {
     // Return it in the \uXXXX format
     return '\\u' + '0000'.substring(firstCharacter, lastCharacter - hex.length) + hex;
 };
-exports.charToUnicodePoint = charToUnicodePoint;
+export { charToUnicodePoint };

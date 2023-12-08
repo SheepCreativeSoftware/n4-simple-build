@@ -1,13 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.listConfig = void 0;
-const fse = require("fs-extra");
-const buntstift_1 = require("buntstift");
-const path = require("path");
+import { createRequire as _createRequire } from "module";
+const __require = _createRequire(import.meta.url);
+import * as fse from 'fs-extra/esm';
+import { buntstift } from 'buntstift';
+const path = __require("path");
 const listDependencies = async () => {
-    const moduleMetaFile = await fse.readJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json'));
+    const moduleMetaFile = await fse.readJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json'));
     if (typeof moduleMetaFile.module.dependencies.dependency === 'undefined') {
-        buntstift_1.buntstift.verbose('No dependecies defined');
+        buntstift.verbose('No dependecies defined');
         return Promise.resolve([]);
     }
     const thatDependencies = [];
@@ -25,4 +24,4 @@ const listConfig = (options) => {
         return listDependencies();
     return Promise.reject(Error('Option not available'));
 };
-exports.listConfig = listConfig;
+export { listConfig };

@@ -1,5 +1,5 @@
-
-import * as fse from 'fs-extra';
+import * as fs from 'fs/promises';
+import * as fse from 'fs-extra/esm';
 import * as iconv from 'iconv-lite';
 
 /** Copies multiple files on the same path at once */
@@ -24,7 +24,7 @@ const copySrcFiles = async function({ oldPath, newPath, filterFiles }: {
 	newPath: string,
 
 	/** List of files that should not be copied */
-	filterFiles: string,
+	filterFiles: string[],
 }) {
 	const filterFunction = (src: string) => {
 		for(const filterFile of filterFiles) {
@@ -59,7 +59,7 @@ const readFile = async function(file: string, { encoding }: {
 	encoding: string,
 }): Promise<string> {
 	try {
-		const buffer = await fse.readFile(file);
+		const buffer = await fs.readFile(file);
 		const fileData = iconv.decode(buffer, encoding);
 		return Promise.resolve(fileData);
 	} catch (error) {

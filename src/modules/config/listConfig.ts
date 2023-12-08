@@ -1,10 +1,10 @@
-import * as fse from 'fs-extra';
+import * as fse from 'fs-extra/esm';
 import { buntstift } from 'buntstift';
-import { ModuleMetaFile } from '../../interfaces/moduleMeta/ModuleMetaFile';
+import { ModuleMetaFile } from '../../interfaces/moduleMeta/ModuleMetaFile.js';
 import path = require('path');
 
 const listDependencies = async () => {
-	const moduleMetaFile = await fse.readJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json')) as ModuleMetaFile;
+	const moduleMetaFile = await fse.readJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json')) as ModuleMetaFile;
 	if(typeof moduleMetaFile.module.dependencies.dependency === 'undefined') {
 		buntstift.verbose('No dependecies defined');
 		return Promise.resolve([]);

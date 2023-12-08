@@ -1,8 +1,8 @@
-import { CsvFileConfig } from './CsvFileConfig';
-import { LexiconFileConfig } from './LexiconFileConfig';
-import { LexiconModuleConfig } from './LexiconModuleConfig';
-import { RtModuleConfig } from './RtModuleConfig';
-import { UxModuleConfig } from './UxModuleConfig';
+import { CsvFileConfig } from './CsvFileConfig.js';
+import { LexiconFileConfig } from './LexiconFileConfig.js';
+import { LexiconModuleConfig } from './LexiconModuleConfig.js';
+import { RtModuleConfig } from './RtModuleConfig.js';
+import { UxModuleConfig } from './UxModuleConfig.js';
 
 interface BuildConfig {
 	modules: LexiconModuleConfig | RtModuleConfig | UxModuleConfig,

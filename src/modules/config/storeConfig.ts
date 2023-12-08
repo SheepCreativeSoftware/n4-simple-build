@@ -1,11 +1,11 @@
-import { readJSON, writeJSON } from 'fs-extra';
-import { baseConfig } from './basicModuleConfig';
-import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig';
+import { readJSON, writeJSON } from 'fs-extra/esm';
+import { baseConfig } from './basicModuleConfig.js';
+import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig.js';
 import { buntstift } from 'buntstift';
 
 import path = require('path');
 
-const buildConfigFilePath = path.resolve(process.cwd(), './buildConfig.json');
+const buildConfigFilePath = path.join(process.cwd(), './buildConfig.json');
 
 /** Read existing config or provide a new default config */
 const getExistingOrNewConfig = async (): Promise<BuildConfig> => {

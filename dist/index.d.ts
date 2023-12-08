@@ -3,13 +3,14 @@
  * @copyright Copyright © 2023 Marina Egner
  * @module n4-simple-build
  */
-import { getHelp } from './modules/cli/getHelp';
-import { initProject } from './modules/init/initProject';
-import { listConfig } from './modules/config/listConfig';
-import { readWriteConfig } from './modules/config/readWriteConfig';
-declare const runBuild: ({ minify }: {
-    minify: boolean;
-}) => void;
+import { getHelp } from './modules/cli/getHelp.js';
+import { initProject } from './modules/init/initProject.js';
+import { listConfig } from './modules/config/listConfig.js';
+import { readWriteConfig } from './modules/config/readWriteConfig.js';
+declare const runBuild: ({ noMinify, noPackage }: {
+    noMinify?: boolean | undefined;
+    noPackage?: boolean | undefined;
+}) => Promise<void>;
 declare const extractLexiconFiles: ({ searchPath }: {
     searchPath: string;
 }) => void;

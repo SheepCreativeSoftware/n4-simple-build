@@ -1,12 +1,12 @@
 
-import { readFile, writeFile } from '../../misc/copyFiles';
-import { BuildConfig } from '../../../interfaces/BuildConfig/BuildConfig';
+import { readFile, writeFile } from '../../misc/copyFiles.js';
+import { BuildConfig } from '../../../interfaces/BuildConfig/BuildConfig.js';
 import { buntstift } from 'buntstift';
-import { createCsvOutput } from './createCsvOutput';
-import { getLanguageFolders } from './getLanguageFolders';
-import { lexFileToObject } from './lexFileToObject';
-import { LexiconObject } from '../../../interfaces/Lexicon/LexiconObject';
-import { searchLexiconBaseFiles } from './searchLexiconBaseFiles';
+import { createCsvOutput } from './createCsvOutput.js';
+import { getLanguageFolders } from './getLanguageFolders.js';
+import { lexFileToObject } from './lexFileToObject.js';
+import { LexiconObject } from '../../../interfaces/Lexicon/LexiconObject.js';
+import { searchLexiconFiles } from './searchLexiconFiles.js';
 import path = require('path');
 
 const exportCSV = async function({ config }: {
@@ -22,8 +22,8 @@ const exportCSV = async function({ config }: {
 	const { relativeLexiconBasePath } = modules;
 
 	// Search base files and store their name in an array if they are lexicons
-	const baseFilePath = path.resolve(process.cwd(), relativeLexiconBasePath);
-	const lexFiles = await searchLexiconBaseFiles({
+	const baseFilePath = path.join(process.cwd(), relativeLexiconBasePath);
+	const lexFiles = await searchLexiconFiles({
 		baseFilePath,
 		lexiconExtension: lexicon.extension,
 	});
@@ -32,17 +32,17 @@ const exportCSV = async function({ config }: {
 	for(const lexFile of lexFiles) {
 		// Get data from base file and store it as default language
 		buntstift.info('- Load base lexicon file: ' + lexFile);
-		const baseLexiconData = await readFile(path.resolve(baseFilePath, lexFile), { encoding: lexicon.encoding });
+		const baseLexiconData = await readFile(path.join(baseFilePath, lexFile), { encoding: lexicon.encoding });
 		const lexiconObject = {} as LexiconObject;
 		lexFileToObject({ language: lexicon.defaultLang, lexFile: baseLexiconData, lexiconObject });
 
 		// Evaluate language folders and load the
 		buntstift.info('- Load lexicon files from module');
-		const moduleFolder = path.resolve(process.cwd(), baseFolder);
+		const moduleFolder = path.join(process.cwd(), baseFolder);
 		const languages = await getLanguageFolders({ defaultLang: lexicon.defaultLang, moduleFolder });
 		for(const language of languages) {
 			if(language === lexicon.defaultLang) continue;
-			const lexiconFilePath = path.resolve(moduleFolder, language, lexFile);
+			const lexiconFilePath = path.join(moduleFolder, language, lexFile);
 			buntstift.info(`  - Load file: ${language}/${lexFile}`);
 			try {
 				const lexiconData = await readFile(lexiconFilePath, { encoding: lexicon.encoding });
@@ -56,7 +56,7 @@ const exportCSV = async function({ config }: {
 
 		const csvFileName = lexFile.replace(`.${lexicon.extension}`, `.${csv.extension}`);
 		buntstift.info(`- Create CSV file: ${csvFileName}`);
-		await writeFile(path.resolve(process.cwd(), csv.exportPath, csvFileName), csvFile, { encoding: csv.encoding });
+		await writeFile(path.join(process.cwd(), csv.exportPath, csvFileName), csvFile, { encoding: csv.encoding });
 	}
 };
 

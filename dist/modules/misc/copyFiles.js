@@ -1,8 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.readFile = exports.copyMultipleFilesSync = exports.copySrcFiles = void 0;
-const fse = require("fs-extra");
-const iconv = require("iconv-lite");
+import * as fs from 'fs/promises';
+import * as fse from 'fs-extra/esm';
+import * as iconv from 'iconv-lite';
 /** Copies multiple files on the same path at once */
 const copyMultipleFilesSync = function ({ files, oldPath, newPath }) {
     for (const file of files) {
@@ -12,7 +10,6 @@ const copyMultipleFilesSync = function ({ files, oldPath, newPath }) {
         });
     }
 };
-exports.copyMultipleFilesSync = copyMultipleFilesSync;
 const copySrcFiles = async function ({ oldPath, newPath, filterFiles }) {
     const filterFunction = (src) => {
         for (const filterFile of filterFiles) {
@@ -28,7 +25,6 @@ const copySrcFiles = async function ({ oldPath, newPath, filterFiles }) {
         preserveTimestamps: true,
     });
 };
-exports.copySrcFiles = copySrcFiles;
 /** Writes a file with almost any encoding */
 const writeFile = async function (file, fileData, { encoding }) {
     try {
@@ -40,11 +36,10 @@ const writeFile = async function (file, fileData, { encoding }) {
         return Promise.reject(error);
     }
 };
-exports.writeFile = writeFile;
 /** Reads a file with almost any encoding */
 const readFile = async function (file, { encoding }) {
     try {
-        const buffer = await fse.readFile(file);
+        const buffer = await fs.readFile(file);
         const fileData = iconv.decode(buffer, encoding);
         return Promise.resolve(fileData);
     }
@@ -52,4 +47,4 @@ const readFile = async function (file, { encoding }) {
         return Promise.reject(error);
     }
 };
-exports.readFile = readFile;
+export { copySrcFiles, copyMultipleFilesSync, readFile, writeFile };

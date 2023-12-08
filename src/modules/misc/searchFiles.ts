@@ -1,4 +1,4 @@
-import { readdir } from 'fs-extra';
+import { readdir } from 'fs/promises';
 
 /**
  * Search for files with a specific file extension in a specific path

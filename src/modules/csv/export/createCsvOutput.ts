@@ -1,5 +1,5 @@
-import { CsvFileConfig } from '../../../interfaces/BuildConfig/CsvFileConfig';
-import { LexiconObject } from '../../../interfaces/Lexicon/LexiconObject';
+import { CsvFileConfig } from '../../../interfaces/BuildConfig/CsvFileConfig.js';
+import { LexiconObject } from '../../../interfaces/Lexicon/LexiconObject.js';
 
 const createCsvOutput = function(lexiconObject: LexiconObject, languages: string[], csv: CsvFileConfig) {
 	let csvFile = 'key'+csv.delimiter;

@@ -1,5 +1,5 @@
-import { BaseModuleConfig } from '../../interfaces/BuildConfig/BaseModuleConfig';
-import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig';
+import { BaseModuleConfig } from '../../interfaces/BuildConfig/BaseModuleConfig.js';
+import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig.js';
 
 const baseModuleConfig = {
 	buildVersion: 0,

@@ -1,8 +1,8 @@
 
-import { getExistingConfig, writeBuildConfig } from './storeConfig';
+import { getExistingConfig, writeBuildConfig } from './storeConfig.js';
 import { buntstift } from 'buntstift';
 
-import { VersionPattern } from '../../types/VersionPattern';
+import { VersionPattern } from '../../types/VersionPattern.js';
 
 const setVersion = async () => {
 	const config = await getExistingConfig();

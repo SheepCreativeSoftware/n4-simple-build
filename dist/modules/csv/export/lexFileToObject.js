@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.lexFileToObject = void 0;
-const unescapeString_1 = require("../../misc/unescapeString");
+import { unescapeString } from '../../misc/unescapeString.js';
 const firstCharacter = 0;
 const afterDelimiter = 1;
 const lexFileToObject = function ({ lexiconObject, lexFile, language }) {
@@ -19,7 +16,7 @@ const lexFileToObject = function ({ lexiconObject, lexFile, language }) {
         const key = correctedLine.substring(firstCharacter, delimiterPosition);
         const keyWithoutSpaces = key.replaceAll(' ', '').replaceAll('\t', '');
         const text = correctedLine.substring(delimiterPosition + afterDelimiter, correctedLine.length);
-        const decodedText = (0, unescapeString_1.unescapeString)({ text });
+        const decodedText = unescapeString({ text });
         if (keyWithoutSpaces === '')
             return;
         if (typeof lexiconObject[keyWithoutSpaces] === 'undefined')
@@ -27,4 +24,4 @@ const lexFileToObject = function ({ lexiconObject, lexFile, language }) {
         lexiconObject[keyWithoutSpaces][language] = decodedText;
     });
 };
-exports.lexFileToObject = lexFileToObject;
+export { lexFileToObject };

@@ -1,4 +1,5 @@
-import { DependencyConfig } from './DependencyConfig';
+import { DependencyConfig } from './DependencyConfig.js';
+import { LexiconConfig } from './LexiconConfig.js';
 interface ModuleMetaFile {
     module: {
         '@': {
@@ -17,9 +18,20 @@ interface ModuleMetaFile {
             autoload: 'true' | 'false';
         };
         dependencies: {
-            dependency: DependencyConfig[] | undefined;
+            dependency?: DependencyConfig[];
         };
         dirs: string;
+        defs?: {
+            def: {
+                '@': {
+                    name: string;
+                    value: string;
+                };
+            };
+        };
+        lexicons?: {
+            lexicon: LexiconConfig[];
+        };
     };
 }
 export { ModuleMetaFile };

@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.convertCsvData = void 0;
-const escapeString_1 = require("../../misc/escapeString");
-const getDate_1 = require("../../misc/getDate");
-const getFileLineEnding_1 = require("../../misc/getFileLineEnding");
+import { escapeString } from '../../misc/escapeString.js';
+import { getCurrentDateTimeString } from '../../misc/getDate.js';
+import { getFileLineEnding } from '../../misc/getFileLineEnding.js';
 const startWithThirdRow = 2;
 const startAfterHeader = 1;
 const startAtBegining = 2;
@@ -21,12 +18,12 @@ const getLanguagesFromHeader = ({ headerElements, lexicon }) => {
 };
 const generateLexiconFileHeader = ({ modules }) => {
     let fileHeader = `# ${modules.name} ${modules.version}.${modules.buildVersion + nextBuild}${lexiconFileLineEnding}`;
-    fileHeader += `# Date: ${(0, getDate_1.getCurrentDateTimeString)()}${lexiconFileLineEnding}`;
+    fileHeader += `# Date: ${getCurrentDateTimeString()}${lexiconFileLineEnding}`;
     return fileHeader;
 };
 /** Converts the CSV data into separate data sets for each language */
 const convertCsvData = function ({ csvFile, lexicon, csv, modules }) {
-    const lineEnding = (0, getFileLineEnding_1.getFileLineEnding)({ fileData: csvFile });
+    const lineEnding = getFileLineEnding({ fileData: csvFile });
     // Split into single lines
     const lines = csvFile.split(lineEnding);
     // First line of CSV are header elements
@@ -47,7 +44,7 @@ const convertCsvData = function ({ csvFile, lexicon, csv, modules }) {
             // eslint-disable-next-line no-continue
             if (rowElements[indexRow] === '')
                 continue;
-            const escapedText = (0, escapeString_1.escapeString)({ text: rowElements[indexRow] });
+            const escapedText = escapeString({ text: rowElements[indexRow] });
             // Every row is a item of a single language
             const arrayPosition = indexRow - startAtBegining;
             const text = `${key}=${escapedText}${lexiconFileLineEnding}`;
@@ -59,4 +56,4 @@ const convertCsvData = function ({ csvFile, lexicon, csv, modules }) {
         fileData,
     ];
 };
-exports.convertCsvData = convertCsvData;
+export { convertCsvData };

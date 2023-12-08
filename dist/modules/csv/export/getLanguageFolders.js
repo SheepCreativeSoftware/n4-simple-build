@@ -1,10 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getLanguageFolders = void 0;
-const fse = require("fs-extra");
+import * as fs from 'fs/promises';
 /** Search base files and store their name in an array if they are lexicons */
 const getLanguageFolders = async ({ moduleFolder, defaultLang }) => {
-    const moduleFolders = await fse.readdir(moduleFolder, { withFileTypes: true });
+    const moduleFolders = await fs.readdir(moduleFolder, { withFileTypes: true });
     const languages = [defaultLang];
     for (const folder of moduleFolders) {
         if (!folder.isDirectory())
@@ -14,4 +11,4 @@ const getLanguageFolders = async ({ moduleFolder, defaultLang }) => {
     }
     return languages;
 };
-exports.getLanguageFolders = getLanguageFolders;
+export { getLanguageFolders };
