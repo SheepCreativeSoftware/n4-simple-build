@@ -40,7 +40,8 @@ const execBuild = async function ({ config, noMinify, noPackage }) {
     buntstift.info('- Create module Metadata');
     const manifestData = createManifest({ vendor, version: currentVersion });
     const moduleMetaFile = await fse.readJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json'));
-    await addLexiconToModuleMeta({ config, moduleMetaFile });
+    if (type === 'Lexicon')
+        await addLexiconToModuleMeta({ config, moduleMetaFile });
     const moduleXmlData = createModuleXml({ buildConfig: config, moduleConfig: moduleMetaFile });
     await fse.ensureDir(path.join(buildPathFolder, 'META-INF'));
     await Promise.all([
