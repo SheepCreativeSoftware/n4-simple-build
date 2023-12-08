@@ -1,5 +1,5 @@
 import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig';
 declare const exportCSV: ({ config }: {
     config: BuildConfig;
-}) => Promise<boolean>;
+}) => Promise<void>;
 export { exportCSV };
