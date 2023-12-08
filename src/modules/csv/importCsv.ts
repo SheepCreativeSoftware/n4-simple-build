@@ -15,7 +15,7 @@ const importCSV = async ({ config }: {
 	const  { baseFolder, modules, csv, lexicon } = config;
 
 	// Skip execution for modules that are not Lexicons
-	if(modules.type !== 'Lexicon') return;
+	if(modules.type !== 'Lexicon') throw new Error('Not a Lexicon module');
 
 	// Search base files and store their name in an array if they are lexicons
 	const importPath = path.resolve(process.cwd(), `./${csv.importPath}`);

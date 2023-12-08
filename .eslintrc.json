@@ -150,7 +150,7 @@
 		"no-caller": "error",
 		"no-confusing-arrow": "error",
 		"no-console": "error",
-		"no-continue": "error",
+		"no-continue": "off",
 		"no-delete-var": "error",
 		"no-else-return": [
 			"error",
