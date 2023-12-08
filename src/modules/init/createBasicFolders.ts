@@ -1,6 +1,6 @@
 
-import * as fse from 'fs-extra';
-import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig';
+import * as fse from 'fs-extra/esm';
+import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig.js';
 import { buntstift } from 'buntstift';
 import path = require('path');
 
@@ -13,23 +13,23 @@ const createBasicFolders = async ({ config }: {
 		buntstift.info('Create Basic folder structure');
 
 		// Create this folder before everything else to avoid conflicts
-		await fse.ensureDir(path.resolve(process.cwd(), config.baseFolder));
+		await fse.ensureDir(path.join(process.cwd(), config.baseFolder));
 		await Promise.all([
-			fse.ensureDir(path.resolve(process.cwd(), '.temp')),
-			fse.ensureDir(path.resolve(process.cwd(), config.outputPath)),
-			fse.ensureDir(path.resolve(process.cwd(), 'signed')),
-			fse.ensureDir(path.resolve(process.cwd(), config.buildPath)),
-			fse.ensureDir(path.resolve(process.cwd(), 'module', 'META-INF')),
+			fse.ensureDir(path.join(process.cwd(), '.temp')),
+			fse.ensureDir(path.join(process.cwd(), config.outputPath)),
+			fse.ensureDir(path.join(process.cwd(), 'signed')),
+			fse.ensureDir(path.join(process.cwd(), config.buildPath)),
+			fse.ensureDir(path.join(process.cwd(), 'module', 'META-INF')),
 		]);
 		if(config.modules.type !== 'Lexicon') {
 			// ...
-			await fse.ensureDir(path.resolve(process.cwd(), config.buildPath, 'rc'));
+			await fse.ensureDir(path.join(process.cwd(), config.buildPath, 'rc'));
 		}
 		if(config.modules.type === 'Lexicon') {
 			await Promise.all([
-				fse.ensureDir(path.resolve(process.cwd(), config.modules.relativeLexiconBasePath)),
-				fse.ensureDir(path.resolve(process.cwd(), config.csv.exportPath)),
-				fse.ensureDir(path.resolve(process.cwd(), config.csv.importPath)),
+				fse.ensureDir(path.join(process.cwd(), config.modules.relativeLexiconBasePath)),
+				fse.ensureDir(path.join(process.cwd(), config.csv.exportPath)),
+				fse.ensureDir(path.join(process.cwd(), config.csv.importPath)),
 			]);
 		}
 		return Promise.resolve();

@@ -1,6 +1,6 @@
-import * as fse from 'fs-extra';
+import * as fse from 'fs-extra/esm';
 import { buntstift } from 'buntstift';
-import { ModuleMetaFile } from '../../interfaces/moduleMeta/ModuleMetaFile';
+import { ModuleMetaFile } from '../../interfaces/moduleMeta/ModuleMetaFile.js';
 import path = require('path');
 
 const oneElement = 1;
@@ -10,7 +10,7 @@ const emptyArray = 0;
 const removeDependency = async () => {
 	const dependencyToRemove = await buntstift.ask('Name of the module you want to remove?');
 
-	const moduleMetaFile = await fse.readJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json')) as ModuleMetaFile;
+	const moduleMetaFile = await fse.readJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json')) as ModuleMetaFile;
 	if(typeof moduleMetaFile.module.dependencies.dependency === 'undefined') {
 		buntstift.verbose('No dependecies defined');
 		return Promise.resolve();
@@ -38,7 +38,7 @@ const removeDependency = async () => {
 	if(!foundSomething) throw Error('Dependency not found!');
 	if(moduleMetaFile.module.dependencies.dependency.length === emptyArray) delete moduleMetaFile.module.dependencies.dependency;
 
-	fse.writeJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json'), moduleMetaFile, { spaces: twoSpaces });
+	fse.writeJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json'), moduleMetaFile, { spaces: twoSpaces });
 	return Promise.resolve();
 };
 

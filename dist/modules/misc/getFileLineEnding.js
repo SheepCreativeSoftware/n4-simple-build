@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getFileLineEnding = void 0;
 const unixLineEnding = '\n';
 const windowsLineEnding = '\r\n';
 /**
@@ -13,4 +10,4 @@ const getFileLineEnding = ({ fileData }) => {
         return windowsLineEnding;
     return unixLineEnding;
 };
-exports.getFileLineEnding = getFileLineEnding;
+export { getFileLineEnding };

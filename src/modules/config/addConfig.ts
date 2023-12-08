@@ -1,6 +1,6 @@
-import * as fse from 'fs-extra';
+import * as fse from 'fs-extra/esm';
 import { buntstift } from 'buntstift';
-import { ModuleMetaFile } from '../../interfaces/moduleMeta/ModuleMetaFile';
+import { ModuleMetaFile } from '../../interfaces/moduleMeta/ModuleMetaFile.js';
 import path = require('path');
 
 const twoSpaces = 2;
@@ -19,10 +19,10 @@ const addDependency = async () => {
 			vendorVersion: version,
 		},
 	};
-	const moduleMetaFile = await fse.readJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json')) as ModuleMetaFile;
+	const moduleMetaFile = await fse.readJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json')) as ModuleMetaFile;
 	if(moduleMetaFile.module.dependencies.dependency) moduleMetaFile.module.dependencies.dependency.push(newDependency);
 	if(typeof moduleMetaFile.module.dependencies.dependency === 'undefined') moduleMetaFile.module.dependencies.dependency = [newDependency];
-	await fse.writeJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json'), moduleMetaFile, { spaces: twoSpaces });
+	await fse.writeJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json'), moduleMetaFile, { spaces: twoSpaces });
 };
 
 const addConfig = (options: {

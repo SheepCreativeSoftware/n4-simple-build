@@ -1,17 +1,16 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.removeConfig = void 0;
-const fse = require("fs-extra");
-const buntstift_1 = require("buntstift");
-const path = require("path");
+import { createRequire as _createRequire } from "module";
+const __require = _createRequire(import.meta.url);
+import * as fse from 'fs-extra/esm';
+import { buntstift } from 'buntstift';
+const path = __require("path");
 const oneElement = 1;
 const twoSpaces = 2;
 const emptyArray = 0;
 const removeDependency = async () => {
-    const dependencyToRemove = await buntstift_1.buntstift.ask('Name of the module you want to remove?');
-    const moduleMetaFile = await fse.readJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json'));
+    const dependencyToRemove = await buntstift.ask('Name of the module you want to remove?');
+    const moduleMetaFile = await fse.readJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json'));
     if (typeof moduleMetaFile.module.dependencies.dependency === 'undefined') {
-        buntstift_1.buntstift.verbose('No dependecies defined');
+        buntstift.verbose('No dependecies defined');
         return Promise.resolve();
     }
     let foundSomething = false;
@@ -21,9 +20,9 @@ const removeDependency = async () => {
             // ...
             moduleMetaFile.module.dependencies.dependency.splice(index, oneElement);
             foundSomething = true;
-            buntstift_1.buntstift.line();
-            buntstift_1.buntstift.info('Removed following module:');
-            buntstift_1.buntstift.table([
+            buntstift.line();
+            buntstift.info('Removed following module:');
+            buntstift.table([
                 {
                     name: dependency['@'].name,
                     vendor: dependency['@'].vendor,
@@ -37,7 +36,7 @@ const removeDependency = async () => {
         throw Error('Dependency not found!');
     if (moduleMetaFile.module.dependencies.dependency.length === emptyArray)
         delete moduleMetaFile.module.dependencies.dependency;
-    fse.writeJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json'), moduleMetaFile, { spaces: twoSpaces });
+    fse.writeJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json'), moduleMetaFile, { spaces: twoSpaces });
     return Promise.resolve();
 };
 const removeConfig = (options) => {
@@ -45,4 +44,4 @@ const removeConfig = (options) => {
         return removeDependency();
     return Promise.reject(Error('Option not available'));
 };
-exports.removeConfig = removeConfig;
+export { removeConfig };

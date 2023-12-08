@@ -4,21 +4,23 @@
  * @module n4-simple-build
  */
 
+import { getExistingConfig, writeBuildConfig } from './modules/config/storeConfig.js';
 import { buntstift } from 'buntstift';
-import { exportCSV } from './modules/csv/export/exportCSV';
-import { getExistingConfig } from './modules/config/storeConfig';
-import { getHelp } from './modules/cli/getHelp';
-import { importCSV } from './modules/csv/import/importCsv';
-import { initProject } from './modules/init/initProject';
-import { listConfig } from './modules/config/listConfig';
-import { readWriteConfig } from './modules/config/readWriteConfig';
+import { execBuild } from './modules/build/execBuild.js';
+import { exportCSV } from './modules/csv/export/exportCSV.js';
+import { getHelp } from './modules/cli/getHelp.js';
+import { importCSV } from './modules/csv/import/importCsv.js';
+import { initProject } from './modules/init/initProject.js';
+import { listConfig } from './modules/config/listConfig.js';
+import { readWriteConfig } from './modules/config/readWriteConfig.js';
 
-const runBuild = ({ minify }: {
-	minify: boolean,
-}): void => {
-	// ...
-	buntstift.verbose('Run Build');
-	buntstift.verbose(`Option minify ${minify}`);
+const runBuild = async ({ noMinify, noPackage }: {
+	noMinify?: boolean,
+	noPackage?: boolean,
+}): Promise<void> => {
+	const config = await getExistingConfig();
+	const newConfig = await execBuild({ config, noMinify, noPackage });
+	await writeBuildConfig({ config: newConfig });
 };
 
 const extractLexiconFiles = ({ searchPath }: {

@@ -1,13 +1,12 @@
-"use strict";
 /**
  * @author Marina Egner <marinafcegner@sheepcs.de>
  * @copyright Copyright © 2023 Marina Egner
  * @description Shows a usage guide for cli commands
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getHelp = void 0;
-const buntstift_1 = require("buntstift");
-const commandLineUsage = require("command-line-usage");
+import { createRequire as _createRequire } from "module";
+const __require = _createRequire(import.meta.url);
+import { buntstift } from 'buntstift';
+const commandLineUsage = __require("command-line-usage");
 const configAddOptions = [
     {
         alias: 'd',
@@ -45,6 +44,12 @@ const buildOptions = [
         alias: 'm',
         description: 'Do not minify Web files',
         name: 'no-minify',
+        type: Boolean,
+    },
+    {
+        alias: 'p',
+        description: 'Finalize files into build folder',
+        name: 'no-package',
         type: Boolean,
     },
 ];
@@ -136,6 +141,6 @@ const getHelp = () => {
             header: 'Reference',
         },
     ]);
-    buntstift_1.buntstift.raw(usage);
+    buntstift.raw(usage);
 };
-exports.getHelp = getHelp;
+export { getHelp };

@@ -1,9 +1,9 @@
-import { CsvFileConfig } from '../../../interfaces/BuildConfig/CsvFileConfig';
-import { escapeString } from '../../misc/escapeString';
-import { getCurrentDateTimeString } from '../../misc/getDate';
-import { getFileLineEnding } from '../../misc/getFileLineEnding';
-import { LexiconFileConfig } from '../../../interfaces/BuildConfig/LexiconFileConfig';
-import { LexiconModuleConfig } from '../../../interfaces/BuildConfig/LexiconModuleConfig';
+import { CsvFileConfig } from '../../../interfaces/BuildConfig/CsvFileConfig.js';
+import { escapeString } from '../../misc/escapeString.js';
+import { getCurrentDateTimeString } from '../../misc/getDate.js';
+import { getFileLineEnding } from '../../misc/getFileLineEnding.js';
+import { LexiconFileConfig } from '../../../interfaces/BuildConfig/LexiconFileConfig.js';
+import { LexiconModuleConfig } from '../../../interfaces/BuildConfig/LexiconModuleConfig.js';
 
 const startWithThirdRow = 2;
 const startAfterHeader = 1;

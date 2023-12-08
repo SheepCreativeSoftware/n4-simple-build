@@ -50,6 +50,12 @@ const buildOptions = [
 		name: 'no-minify',
 		type: Boolean,
 	},
+	{
+		alias: 'p',
+		description: 'Finalize files into build folder',
+		name: 'no-package',
+		type: Boolean,
+	},
 ] as commandLineUsage.OptionDefinition[];
 
 const lexiconOptions = [

@@ -1,14 +1,13 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createModuleMeta = void 0;
-const fse = require("fs-extra");
-const buntstift_1 = require("buntstift");
-const path = require("path");
+import { createRequire as _createRequire } from "module";
+const __require = _createRequire(import.meta.url);
+import * as fse from 'fs-extra/esm';
+import { buntstift } from 'buntstift';
+const path = __require("path");
 const twoSpaces = 2;
 /** Writes the config to the file system */
 const createModuleMeta = async ({ config }) => {
     try {
-        buntstift_1.buntstift.info('Create Basic module config');
+        buntstift.info('Create Basic module config');
         let moduleType = config.modules.type;
         if (moduleType === 'Lexicon')
             moduleType = 'rt';
@@ -38,11 +37,21 @@ const createModuleMeta = async ({ config }) => {
             },
         };
         /* eslint-enable sort-keys */
-        await fse.writeJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json'), moduleMetaFile, { spaces: twoSpaces });
+        if (config.modules.type === 'Lexicon') {
+            moduleMetaFile.module.defs = {
+                def: {
+                    '@': {
+                        name: config.modules.name,
+                        value: config.modules.name,
+                    },
+                },
+            };
+        }
+        await fse.writeJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json'), moduleMetaFile, { spaces: twoSpaces });
         return Promise.resolve();
     }
     catch (error) {
         return Promise.reject(error);
     }
 };
-exports.createModuleMeta = createModuleMeta;
+export { createModuleMeta };

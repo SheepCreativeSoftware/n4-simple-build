@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.baseConfig = void 0;
 const baseModuleConfig = {
     buildVersion: 0,
     description: 'Some module',
@@ -34,4 +31,4 @@ const baseConfig = {
     outputPath: 'output',
     vendor: 'The Company',
 };
-exports.baseConfig = baseConfig;
+export { baseConfig };

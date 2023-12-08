@@ -10,7 +10,7 @@ declare const copySrcFiles: ({ oldPath, newPath, filterFiles }: {
     /** Destination path */
     newPath: string;
     /** List of files that should not be copied */
-    filterFiles: string;
+    filterFiles: string[];
 }) => Promise<void>;
 /** Writes a file with almost any encoding */
 declare const writeFile: (file: string, fileData: string, { encoding }: {

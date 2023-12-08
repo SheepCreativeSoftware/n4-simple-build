@@ -1,8 +1,8 @@
 
-import * as fse from 'fs-extra';
-import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig';
+import * as fse from 'fs-extra/esm';
+import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig.js';
 import { buntstift } from 'buntstift';
-import { ModuleMetaFile } from '../../interfaces/moduleMeta/ModuleMetaFile';
+import { ModuleMetaFile } from '../../interfaces/moduleMeta/ModuleMetaFile.js';
 import path = require('path');
 
 const twoSpaces = 2;
@@ -42,8 +42,18 @@ const createModuleMeta = async ({ config }: {
 			},
 		};
 		/* eslint-enable sort-keys */
+		if(config.modules.type === 'Lexicon') {
+			moduleMetaFile.module.defs = {
+				def: {
+					'@': {
+						name: config.modules.name,
+						value: config.modules.name,
+					},
+				},
+			};
+		}
 
-		await fse.writeJSON(path.resolve(process.cwd(), 'module', 'META-INF', 'module.json'), moduleMetaFile, { spaces: twoSpaces });
+		await fse.writeJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json'), moduleMetaFile, { spaces: twoSpaces });
 		return Promise.resolve();
 	} catch (error) {
 		return Promise.reject(error);

@@ -1,8 +1,8 @@
-import { addConfig } from './addConfig';
+import { addConfig } from './addConfig.js';
 import { buntstift } from 'buntstift';
-import { listConfig } from './listConfig';
-import { removeConfig } from './removeConfig';
-import { setConfig } from './setConfig';
+import { listConfig } from './listConfig.js';
+import { removeConfig } from './removeConfig.js';
+import { setConfig } from './setConfig.js';
 
 const atLeastOne = 1;
 

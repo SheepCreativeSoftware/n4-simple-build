@@ -1,4 +1,4 @@
-import { BaseModuleConfig } from './BaseModuleConfig';
+import { BaseModuleConfig } from './BaseModuleConfig.js';
 
 interface RtModuleConfig extends BaseModuleConfig {
 	type: 'rt',
