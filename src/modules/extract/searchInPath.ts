@@ -4,6 +4,7 @@ import { buntstift } from 'buntstift';
 import path from 'path';
 import { unzipFile } from './unzipFile.js';
 
+/** Search in path for jar files and unzip metadata and lexicon file */
 const searchInPath = async ({ config, searchPath }: {
 	config: BuildConfig,
 	searchPath: string,

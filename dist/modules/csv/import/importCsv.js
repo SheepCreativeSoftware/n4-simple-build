@@ -25,6 +25,7 @@ const importCSV = async ({ config }) => {
             const language = languages[indexOut];
             const lexiconFileName = csvFileName.replace(csv.extension, lexicon.extension);
             buntstift.info(`  - Output lexicon file: ${language}/${lexiconFileName}`);
+            buntstift.line();
             const lexiconFilePath = path.join(process.cwd(), `./${baseFolder}/${language}/${lexiconFileName}`);
             await writeFile(lexiconFilePath, fileData[indexOut], { encoding: lexicon.encoding });
         }

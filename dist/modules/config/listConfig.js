@@ -3,6 +3,7 @@ const __require = _createRequire(import.meta.url);
 import * as fse from 'fs-extra/esm';
 import { buntstift } from 'buntstift';
 const path = __require("path");
+/** Output a table of all dependecies */
 const listDependencies = async () => {
     const moduleMetaFile = await fse.readJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json'));
     if (typeof moduleMetaFile.module.dependencies.dependency === 'undefined') {

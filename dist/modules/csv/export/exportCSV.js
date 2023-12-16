@@ -7,6 +7,7 @@ import { getLanguageFolders } from './getLanguageFolders.js';
 import { lexFileToObject } from './lexFileToObject.js';
 import { searchLexiconFiles } from './searchLexiconFiles.js';
 const path = __require("path");
+/** Export Lexicon Data to a CSV file */
 const exportCSV = async function ({ config }) {
     buntstift.header('Start export CSV process');
     const { baseFolder, modules, csv, lexicon } = config;
@@ -48,6 +49,7 @@ const exportCSV = async function ({ config }) {
         const csvFile = createCsvOutput(lexiconObject, languages, csv);
         const csvFileName = lexFile.replace(`.${lexicon.extension}`, `.${csv.extension}`);
         buntstift.info(`- Create CSV file: ${csvFileName}`);
+        buntstift.line();
         await writeFile(path.join(process.cwd(), csv.exportPath, csvFileName), csvFile, { encoding: csv.encoding });
     }
 };

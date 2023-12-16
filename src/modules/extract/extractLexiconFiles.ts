@@ -9,6 +9,10 @@ const extractLexiconFiles = async ({ searchPath }: {
 }) => {
 	buntstift.header(`Extract Lexicon files from: ${searchPath}`);
 	const config = await getExistingConfig();
+	if(config.modules.type !== 'Lexicon') {
+		buntstift.error('Not a Lexicon module');
+		return;
+	}
 	const promiseResults = await searchInPath({ config, searchPath });
 	const indexedFiles = await indexResultingFiles({ config, promiseResults });
 	await copyLexiconBaseFiles({ config, indexedFiles });

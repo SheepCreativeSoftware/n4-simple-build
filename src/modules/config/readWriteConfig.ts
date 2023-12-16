@@ -6,6 +6,7 @@ import { setConfig } from './setConfig.js';
 
 const atLeastOne = 1;
 
+/** Evaluate what to do with the config */
 // eslint-disable-next-line complexity
 const readWriteConfig = async (mode: 'LIST' | 'SET' | 'ADD' | 'RM', options: {
 	dependency?: boolean,

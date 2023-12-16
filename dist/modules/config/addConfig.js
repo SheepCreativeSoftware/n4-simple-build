@@ -4,6 +4,7 @@ import * as fse from 'fs-extra/esm';
 import { buntstift } from 'buntstift';
 const path = __require("path");
 const twoSpaces = 2;
+/** Ask the user for informations to add a dependency to the module Metadata */
 const addDependency = async () => {
     const moduleName = await buntstift.ask('Name for the module:', { default: 'someModule' });
     const vendor = await buntstift.ask('Vendor of the module:', { default: 'The Company' });

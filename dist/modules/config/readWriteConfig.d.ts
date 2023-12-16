@@ -1,3 +1,4 @@
+/** Evaluate what to do with the config */
 declare const readWriteConfig: (mode: 'LIST' | 'SET' | 'ADD' | 'RM', options: {
     dependency?: boolean;
     version?: boolean;

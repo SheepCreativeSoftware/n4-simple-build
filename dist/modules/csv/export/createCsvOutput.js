@@ -1,3 +1,4 @@
+/** Converts a LexiconObject into a CSV output */
 const createCsvOutput = function (lexiconObject, languages, csv) {
     let csvFile = 'key' + csv.delimiter;
     languages.forEach((language) => {

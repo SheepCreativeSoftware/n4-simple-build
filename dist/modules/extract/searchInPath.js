@@ -2,6 +2,7 @@ import * as fs from 'fs/promises';
 import { buntstift } from 'buntstift';
 import path from 'path';
 import { unzipFile } from './unzipFile.js';
+/** Search in path for jar files and unzip metadata and lexicon file */
 const searchInPath = async ({ config, searchPath }) => {
     const lexiconExtension = `.${config.lexicon.extension}`;
     const filePath = await fs.readdir(searchPath);

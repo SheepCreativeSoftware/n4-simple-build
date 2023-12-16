@@ -5,6 +5,7 @@
  */
 
 import { getExistingConfig, writeBuildConfig } from './modules/config/storeConfig.js';
+import { buntstift } from 'buntstift';
 import { execBuild } from './modules/build/execBuild.js';
 import { exportCSV } from './modules/csv/export/exportCSV.js';
 import { extractLexiconFiles } from './modules/extract/extractLexiconFiles.js';
@@ -26,11 +27,19 @@ const runBuild = async ({ noMinify, noPackage }: {
 
 const lexiconCsvExport = async (): Promise<void> => {
 	const config = await getExistingConfig();
+	if(config.modules.type !== 'Lexicon') {
+		buntstift.error('Not a Lexicon module');
+		return;
+	}
 	await exportCSV({ config });
 };
 
 const lexiconCsvImport = async (): Promise<void> => {
 	const config = await getExistingConfig();
+	if(config.modules.type !== 'Lexicon') {
+		buntstift.error('Not a Lexicon module');
+		return;
+	}
 	await importCSV({ config });
 };
 

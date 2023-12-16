@@ -11,6 +11,7 @@ const unzipFile = ({ zipFilePath, outputPath, findFiles }) => {
             on('entry', function (entry) {
             const zipFileName = entry.path;
             let foundFile = false;
+            // Search if one of the files has been found
             for (const findFile of findFiles) {
                 if (zipFileName.includes(findFile)) {
                     const fullPath = path.join(outputPath, zipFileName);
@@ -22,6 +23,7 @@ const unzipFile = ({ zipFilePath, outputPath, findFiles }) => {
                     filePaths.push(realFullpath);
                 }
             }
+            // Drain pipe in case nothing was found in
             if (foundFile === false)
                 entry.autodrain();
         }).on('finish', () => {

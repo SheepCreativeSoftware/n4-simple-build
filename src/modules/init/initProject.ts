@@ -4,6 +4,7 @@ import { createBasicFolders } from './createBasicFolders.js';
 import { createModuleMeta } from './createModuleMeta.js';
 import { initCliPromt } from './initCliPromt.js';
 
+/** Create a module config and create base folder based on questions to the user */
 const initProject = async (): Promise<void> => {
 	try {
 		buntstift.header('Initialize Module');

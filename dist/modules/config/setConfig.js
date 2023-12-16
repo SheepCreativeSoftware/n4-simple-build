@@ -1,5 +1,6 @@
 import { getExistingConfig, writeBuildConfig } from './storeConfig.js';
 import { buntstift } from 'buntstift';
+/** Set a new version to the module */
 const setVersion = async () => {
     const config = await getExistingConfig();
     config.modules.version = await buntstift.ask('Version (major.minor.patch):', {

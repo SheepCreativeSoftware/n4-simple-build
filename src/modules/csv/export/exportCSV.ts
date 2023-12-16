@@ -9,6 +9,7 @@ import { LexiconObject } from '../../../interfaces/Lexicon/LexiconObject.js';
 import { searchLexiconFiles } from './searchLexiconFiles.js';
 import path = require('path');
 
+/** Export Lexicon Data to a CSV file */
 const exportCSV = async function({ config }: {
 	config: BuildConfig,
 }) {
@@ -56,6 +57,7 @@ const exportCSV = async function({ config }: {
 
 		const csvFileName = lexFile.replace(`.${lexicon.extension}`, `.${csv.extension}`);
 		buntstift.info(`- Create CSV file: ${csvFileName}`);
+		buntstift.line();
 		await writeFile(path.join(process.cwd(), csv.exportPath, csvFileName), csvFile, { encoding: csv.encoding });
 	}
 };

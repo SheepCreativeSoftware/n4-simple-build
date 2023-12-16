@@ -4,6 +4,7 @@ import { listConfig } from './listConfig.js';
 import { removeConfig } from './removeConfig.js';
 import { setConfig } from './setConfig.js';
 const atLeastOne = 1;
+/** Evaluate what to do with the config */
 // eslint-disable-next-line complexity
 const readWriteConfig = async (mode, options) => {
     try {

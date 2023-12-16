@@ -3,7 +3,7 @@ const __require = _createRequire(import.meta.url);
 import * as fse from 'fs-extra/esm';
 import { buntstift } from 'buntstift';
 const path = __require("path");
-/** Writes the config to the file system */
+/** Creates the basic folders for later usage */
 const createBasicFolders = async ({ config }) => {
     try {
         buntstift.info('Create Basic folder structure');
@@ -16,6 +16,7 @@ const createBasicFolders = async ({ config }) => {
             fse.ensureDir(path.join(process.cwd(), config.buildPath)),
             fse.ensureDir(path.join(process.cwd(), 'module', 'META-INF')),
         ]);
+        // Create module type specific folders
         if (config.modules.type !== 'Lexicon') {
             // ...
             await fse.ensureDir(path.join(process.cwd(), config.buildPath, 'rc'));
