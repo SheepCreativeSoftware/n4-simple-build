@@ -1,6 +1,6 @@
 import * as fs from 'fs/promises';
 import * as fse from 'fs-extra/esm';
-import * as iconv from 'iconv-lite';
+import iconv from 'iconv-lite';
 /** Copies multiple files on the same path at once */
 const copyMultipleFilesSync = function ({ files, oldPath, newPath }) {
     for (const file of files) {

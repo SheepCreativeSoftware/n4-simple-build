@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 
 # Ignore created files from tool
 buildConfig.json
@@ -9,4 +9,4 @@ module/
 lex-base/
 lex-export/
 lex-import/
-.testing/
+.testing
