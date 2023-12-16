@@ -36,6 +36,7 @@ const createModuleMeta = async ({ config }) => {
                 dirs: '',
             },
         };
+        // Add specific config for Lexicon modules
         /* eslint-enable sort-keys */
         if (config.modules.type === 'Lexicon') {
             moduleMetaFile.module.defs = {

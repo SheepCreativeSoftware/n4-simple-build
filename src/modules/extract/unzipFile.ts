@@ -3,6 +3,7 @@ import * as fse from 'fs-extra/esm';
 import * as unzipper from 'unzipper';
 import path from 'path';
 
+
 const unzipFile = ({ zipFilePath, outputPath, findFiles }: { zipFilePath: string, outputPath: string, findFiles: string[] }): Promise<string[]> => {
 	const filePaths = [] as string[];
 	return new Promise((resolve, reject) => {
@@ -12,6 +13,8 @@ const unzipFile = ({ zipFilePath, outputPath, findFiles }: { zipFilePath: string
 			on('entry', function (entry) {
 				const zipFileName = entry.path as string;
 				let foundFile = false;
+
+				// Search if one of the files has been found
 				for(const findFile of findFiles) {
 					if(zipFileName.includes(findFile)) {
 						const fullPath = path.join(outputPath, zipFileName);
@@ -23,6 +26,8 @@ const unzipFile = ({ zipFilePath, outputPath, findFiles }: { zipFilePath: string
 						filePaths.push(realFullpath);
 					}
 				}
+
+				// Drain pipe in case nothing was found in
 				if(foundFile === false) entry.autodrain();
 			}).on('finish', () => {
 				return resolve(filePaths);

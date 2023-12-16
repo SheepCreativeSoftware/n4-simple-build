@@ -1,6 +1,7 @@
 import { unescapeString } from '../../misc/unescapeString.js';
 const firstCharacter = 0;
 const afterDelimiter = 1;
+/** Converts lexicon file into object or append to an object */
 const lexFileToObject = function ({ lexiconObject, lexFile, language }) {
     let lineEnding = '\r\n';
     if (!lexFile.includes('\r\n'))

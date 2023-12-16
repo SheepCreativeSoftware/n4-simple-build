@@ -4,6 +4,7 @@ import { unescapeString } from '../../misc/unescapeString.js';
 const firstCharacter = 0;
 const afterDelimiter = 1;
 
+/** Converts lexicon file into object or append to an object */
 const lexFileToObject = function({ lexiconObject, lexFile, language }: {
 	lexiconObject: LexiconObject, lexFile: string, language: string
 }) {

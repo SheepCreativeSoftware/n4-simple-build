@@ -3,6 +3,7 @@ import { buntstift } from 'buntstift';
 import { ModuleMetaFile } from '../../interfaces/moduleMeta/ModuleMetaFile.js';
 import path = require('path');
 
+/** Output a table of all dependecies */
 const listDependencies = async () => {
 	const moduleMetaFile = await fse.readJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json')) as ModuleMetaFile;
 	if(typeof moduleMetaFile.module.dependencies.dependency === 'undefined') {

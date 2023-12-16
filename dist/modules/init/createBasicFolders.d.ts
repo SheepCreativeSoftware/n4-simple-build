@@ -1,5 +1,5 @@
 import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig.js';
-/** Writes the config to the file system */
+/** Creates the basic folders for later usage */
 declare const createBasicFolders: ({ config }: {
     config: BuildConfig;
 }) => Promise<void>;

@@ -2,6 +2,7 @@ import { ParsedModuleMetaFile } from '../../interfaces/extract/ParsedMetaFile.js
 import { readFile } from '../misc/copyFiles.js';
 import { XMLParser } from 'fast-xml-parser';
 
+/** Reads the modulename from the module.xml file */
 const getModuleName = async ({ encoding, filePath }: {
 	encoding: string,
 	filePath: string,
