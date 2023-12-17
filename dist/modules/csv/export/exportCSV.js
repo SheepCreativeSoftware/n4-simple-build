@@ -43,7 +43,7 @@ const exportCSV = async function ({ config }) {
             }
             catch (error) {
                 if (error instanceof Error)
-                    buntstift.error(`- File not found - ${error.message}`);
+                    buntstift.warn(`- File not found - ${error.message}`);
             }
         }
         const csvFile = createCsvOutput(lexiconObject, languages, csv);
@@ -52,5 +52,6 @@ const exportCSV = async function ({ config }) {
         buntstift.line();
         await writeFile(path.join(process.cwd(), csv.exportPath, csvFileName), csvFile, { encoding: csv.encoding });
     }
+    buntstift.success('Export finished');
 };
 export { exportCSV };

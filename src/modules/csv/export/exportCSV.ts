@@ -49,7 +49,7 @@ const exportCSV = async function({ config }: {
 				const lexiconData = await readFile(lexiconFilePath, { encoding: lexicon.encoding });
 				lexFileToObject({ language, lexFile: lexiconData, lexiconObject });
 			} catch (error) {
-				if(error instanceof Error) buntstift.error(`- File not found - ${error.message}`);
+				if(error instanceof Error) buntstift.warn(`- File not found - ${error.message}`);
 			}
 		}
 
@@ -60,6 +60,7 @@ const exportCSV = async function({ config }: {
 		buntstift.line();
 		await writeFile(path.join(process.cwd(), csv.exportPath, csvFileName), csvFile, { encoding: csv.encoding });
 	}
+	buntstift.success('Export finished');
 };
 
 export { exportCSV };

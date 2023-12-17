@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "npm run bin/cli.js",
-    "test": "mocha dist/ --recursive"
+    "test": "mocha test/ --recursive"
   },
   "repository": {
     "type": "git",

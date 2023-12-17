@@ -33,6 +33,6 @@ const copyLexiconBaseFiles = async ({ config, indexedFiles }) => {
         }
     }
     buntstift.line();
-    buntstift.info(`Added ${copiedFiles} and combined ${combinedFiles} files into Lexicon base path`);
+    buntstift.success(`Added ${copiedFiles} and combined ${combinedFiles} files into Lexicon base path`);
 };
 export { copyLexiconBaseFiles };

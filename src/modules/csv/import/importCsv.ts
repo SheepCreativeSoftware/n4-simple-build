@@ -38,6 +38,7 @@ const importCSV = async ({ config }: {
 			await writeFile(lexiconFilePath, fileData[indexOut], { encoding: lexicon.encoding });
 		}
 	}
+	buntstift.success('Import finished');
 };
 
 export { importCSV };

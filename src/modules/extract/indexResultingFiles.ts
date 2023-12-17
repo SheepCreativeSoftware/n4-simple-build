@@ -45,6 +45,7 @@ const indexResultingFiles = async({ config, promiseResults }: {
 			indexedFiles[moduleName].lexiconFilePaths.push(lexiconFilePath);
 		}
 	}
+	buntstift.success('Indexing completed');
 	return indexedFiles;
 };
 
