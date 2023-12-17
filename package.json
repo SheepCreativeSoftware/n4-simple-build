@@ -1,6 +1,6 @@
 {
   "name": "n4-simple-build",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "copyright": "Copyright © 2023 Marina Egner",
   "description": "Simple N4 module build & Lexicon handling tool",
   "main": "dist/index.js",
