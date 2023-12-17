@@ -57,5 +57,4 @@ Root
 ├───lex-base    --> Base files from other modules
 ├───lex-export  --> CSV Export path
 └───lex-import  --> CSV Import path
-
 ```

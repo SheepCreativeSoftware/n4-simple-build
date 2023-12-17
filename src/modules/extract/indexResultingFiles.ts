@@ -1,9 +1,23 @@
 import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig.js';
 import { buntstift } from 'buntstift';
-import { getModuleName } from './getModuleName.js';
+import { getModuleData } from './getModuleData.js';
 import { IndexedFiles } from '../../interfaces/extract/IndexedFiles.js';
 
 const moreThanTwo = 2;
+
+const checkFiles = async (value: string[], lexiconEncoding: string, lexiconExtension: string): Promise<[string|null, boolean, string|null]> => {
+	let moduleName = null;
+	let lexiconType = false;
+	let lexiconFilePath = null;
+	for(const result of value) {
+		if(result.includes('module.xml')){
+			// ...
+			[moduleName, lexiconType] = await getModuleData({ encoding: lexiconEncoding, filePath: result });
+		}
+		if(result.includes(lexiconExtension)) lexiconFilePath = result;
+	}
+	return [moduleName, lexiconType, lexiconFilePath];
+};
 
 /** Analyse promise from unzip to evaluate which files to copy later */
 const indexResultingFiles = async({ config, promiseResults }: {
@@ -17,19 +31,13 @@ const indexResultingFiles = async({ config, promiseResults }: {
 			buntstift.error(promiseResult.reason);
 			continue;
 		}
-		let moduleName = null;
-		let lexiconFilePath = null;
 
-		// Should include a module.xml and a lexicon file path
-		for(const result of promiseResult.value) {
-			if(result.includes('module.xml')) moduleName = await getModuleName({ encoding: config.lexicon.encoding, filePath: result });
-			if(result.includes(config.lexicon.extension)) lexiconFilePath = result;
-		}
+		const [moduleName, lexiconType, lexiconFilePath] = await checkFiles(promiseResult.value, config.lexicon.encoding, config.lexicon.extension);
 
+		// If one of these files is missing or if lexicon type than it cannot be used (Most probably if there is no valid lexicon file included)
+		if(!moduleName || !lexiconFilePath || lexiconType) continue;
 		if(promiseResult.value.length > moreThanTwo) buntstift.warn(`Module: ${moduleName} two many files`);
 
-		// If one of these files is missing than it cannot be used (Most probably if there is no lexicon file included)
-		if(!moduleName || !lexiconFilePath) continue;
 		if(typeof indexedFiles[moduleName] === 'undefined') {
 			// Create new entry as it is not yet exiting
 			indexedFiles[moduleName] = { lexiconFilePaths: [lexiconFilePath] };
