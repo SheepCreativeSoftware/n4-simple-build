@@ -21,12 +21,6 @@ const initCliPromt = async ({ config }: {
 	}) as VersionPattern;
 	config.modules.type = await buntstift.select('Select the Type of the module:', ['Lexicon', 'rt', 'ux']) as ModuleType;
 
-	// Check UX module specific config
-	if(config.modules.type === 'ux') {
-		// ..
-		config.modules.hasTypeScript = await buntstift.confirm('Has this Project TypeScript?', config.modules.hasTypeScript);
-	}
-
 	// Check Lexicon module specific config
 	if(config.modules.type === 'Lexicon') {
 		config.lexicon.defaultLang = await buntstift.ask('Default Language of original lexicon files:', { default: config.lexicon.defaultLang });

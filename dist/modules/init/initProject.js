@@ -4,11 +4,13 @@ import { createBasicFolders } from './createBasicFolders.js';
 import { createModuleMeta } from './createModuleMeta.js';
 import { initCliPromt } from './initCliPromt.js';
 /** Create a module config and create base folder based on questions to the user */
-const initProject = async () => {
+const initProject = async (testConfig) => {
     try {
         buntstift.header('Initialize Module');
         const config = await getExistingOrNewConfig();
-        const newConfig = await initCliPromt({ config });
+        let newConfig = testConfig;
+        if (typeof newConfig === 'undefined')
+            newConfig = await initCliPromt({ config });
         buntstift.line();
         await writeBuildConfig({ config: newConfig });
         await createBasicFolders({ config: newConfig });

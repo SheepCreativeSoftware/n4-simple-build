@@ -125,3 +125,5 @@ changelog.md
 tsconfig.json
 .vscode/
 .testing/
+testModules/
+
