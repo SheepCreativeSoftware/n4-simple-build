@@ -5,6 +5,9 @@ const convertConplex = (element, index, array, csv) => {
     let newText = element;
     for (let index2 = index + nextArrayElement; index2 < array.length; index2++) {
         const nextElement = array[index2];
+        // Is not a following element, then nothing to do (just slice afterwards)
+        if (nextElement === '')
+            break;
         // Destroy array content to be not computed for something else
         array[index2] = null;
         newText += csv.delimiter + nextElement;
