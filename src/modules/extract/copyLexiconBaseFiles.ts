@@ -2,6 +2,8 @@ import * as fs from 'fs/promises';
 import * as fse from 'fs-extra/esm';
 import { BuildConfig } from '../../interfaces/BuildConfig/BuildConfig.js';
 import { buntstift } from 'buntstift';
+import { getFileLineEnding } from '../misc/getFileLineEnding.js';
+import iconv from 'iconv-lite';
 import { IndexedFiles } from '../../interfaces/extract/IndexedFiles.js';
 import path from 'path';
 
@@ -28,9 +30,19 @@ const copyLexiconBaseFiles = async({ config, indexedFiles }: {
 		try {
 			// Remove old file first and then simply create and append new data into a single file per module
 			fse.removeSync(destinationPath);
+			let lineEnding = null as null|string;
 			for(const lexiconFilePath of lexiconFilePaths) {
 				const fileData = await fs.readFile(lexiconFilePath);
+
+				// Evaluate the line ending once per module
+				if(!lineEnding) {
+					const fileDataText = iconv.decode(fileData, config.lexicon.encoding);
+					lineEnding = getFileLineEnding({ fileData: fileDataText });
+				}
 				await fs.appendFile(destinationPath, fileData);
+
+				// Add Line a additional Line Ending to the file, to make sure it exists
+				if(!lineEnding) await fs.appendFile(destinationPath, lineEnding);
 			}
 			if(lexiconFilePaths.length > moreThanOne) combinedFiles += lexiconFilePaths.length;
 			copiedFiles++;
