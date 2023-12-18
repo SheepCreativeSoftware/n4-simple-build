@@ -83,7 +83,7 @@ const cli = async ()=> {
 			{ alias: 'p', name: 'no-package', type: Boolean },
 		];
 		const buildOptions = commandLineArgs(buildDefinitions, { argv });
-		return runBuild({ noMinify: buildOptions['no-minify'] === true, noPackage: buildOptions['no-minify'] === true });
+		return runBuild({ noMinify: buildOptions['no-minify'] === true, noPackage: buildOptions['no-package'] === true });
 	}
 
 	if(mainOptions.command === 'lexicon') {
