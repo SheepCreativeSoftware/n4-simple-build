@@ -52,7 +52,7 @@ const convertCsvLine = ({ csv, line }) => {
         throw new Error(`Format Error at line ${line}`);
     });
     // Get rid of null holes
-    const onlyDefinedContent = reconstructedLines.filter((element) => element !== '');
+    const onlyDefinedContent = reconstructedLines.filter((element) => element !== null);
     return onlyDefinedContent;
 };
 export { convertCsvLine };

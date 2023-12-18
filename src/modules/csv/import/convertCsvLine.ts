@@ -64,7 +64,7 @@ const convertCsvLine = ({ csv, line }: {
 	});
 
 	// Get rid of null holes
-	const onlyDefinedContent = reconstructedLines.filter((element) => element !== '') as string[];
+	const onlyDefinedContent = reconstructedLines.filter((element) => element !== null) as string[];
 	return onlyDefinedContent;
 };
 
