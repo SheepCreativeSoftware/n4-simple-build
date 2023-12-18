@@ -42,7 +42,7 @@ const copyLexiconBaseFiles = async({ config, indexedFiles }: {
 				await fs.appendFile(destinationPath, fileData);
 
 				// Add Line a additional Line Ending to the file, to make sure it exists
-				if(!lineEnding) await fs.appendFile(destinationPath, lineEnding);
+				if(lineEnding) await fs.appendFile(destinationPath, lineEnding);
 			}
 			if(lexiconFilePaths.length > moreThanOne) combinedFiles += lexiconFilePaths.length;
 			copiedFiles++;
