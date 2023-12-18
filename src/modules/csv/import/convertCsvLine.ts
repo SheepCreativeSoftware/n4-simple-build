@@ -35,6 +35,9 @@ const convertCsvLine = ({ csv, line }: {
 			let newText = element;
 			for(let index2 = index+nextArrayElement; index2 < array.length; index2++) {
 				const nextElement = array[index2];
+
+				// Destroy array content to be not computed for something else
+				array[index2] = '';
 				newText += csv.delimiter + nextElement;
 				if(nextElement.endsWith(csv.escapeCharacter)) break;
 			}
