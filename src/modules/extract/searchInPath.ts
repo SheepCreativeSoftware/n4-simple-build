@@ -5,8 +5,6 @@ import path from 'path';
 import { showProgressBar } from '../misc/showProgressBar.js';
 import { unzipFileMultiple } from './unzipFile.js';
 
-const maxFiles = 700;
-
 /** Search in path for jar files and unzip metadata and lexicon file */
 const searchInPath = async ({ config, searchPath }: {
 	config: BuildConfig,
@@ -17,10 +15,6 @@ const searchInPath = async ({ config, searchPath }: {
 	buntstift.success(`Found ${filePath.length} files in path to extract`);
 	const promisesUnzip = [];
 
-	if(filePath.length >= maxFiles) {
-		buntstift.error('Too many files');
-		throw new Error('Too many files');
-	}
 	let index = 0;
 
 	for(const file of filePath) {
