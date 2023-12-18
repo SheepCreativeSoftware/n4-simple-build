@@ -57,6 +57,9 @@ const convertCsvData = function({ csvFile, lexicon, csv, modules }: {
 
 	/** Lexicon converted Data for each language */
 	fileData: string[],
+
+	/** Header of the file */
+	header: string[],
 ] {
 	const lineEnding = getFileLineEnding({ fileData: csvFile });
 
@@ -75,7 +78,12 @@ const convertCsvData = function({ csvFile, lexicon, csv, modules }: {
 
 	// Create header for each language file
 	const fileData = [];
-	for(let index = 0; index < languages.length; index++) fileData.push(generateLexiconFileHeader({ modules }));
+	const header = [];
+	for(let index = 0; index < languages.length; index++) {
+		const generatedHeader = generateLexiconFileHeader({ modules });
+		fileData.push(generatedHeader);
+		header.push(generatedHeader);
+	}
 
 	for(let indexLines = startAfterHeader; indexLines < lines.length; indexLines++) {
 		const line = lines[indexLines];
@@ -102,7 +110,8 @@ const convertCsvData = function({ csvFile, lexicon, csv, modules }: {
 	return [
 		languages,
 		fileData,
+		header,
 	];
 };
 
-export { convertCsvData };
+export { convertCsvData, generateLexiconFileHeader };

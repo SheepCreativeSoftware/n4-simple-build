@@ -28,9 +28,12 @@ const importCSV = async ({ config }: {
 		const csvFile = await readFile(`${importPath}/${csvFileName}`, { encoding: csv.encoding });
 
 		buntstift.info(` - Parse CSV File ${csvFileName}`);
-		const [languages, fileData] = convertCsvData({ csv, csvFile, lexicon, modules });
+		const [languages, fileData, header] = convertCsvData({ csv, csvFile, lexicon, modules });
 		for(let indexOut = 0; indexOut < languages.length; indexOut++) {
 			const language = languages[indexOut];
+
+			// Don't generate output if only header is present in file
+			if(fileData[indexOut] === header[indexOut]) continue;
 			const lexiconFileName = csvFileName.replace(csv.extension, lexicon.extension);
 			buntstift.info(`  - Output lexicon file: ${language}/${lexiconFileName}`);
 			buntstift.line();
