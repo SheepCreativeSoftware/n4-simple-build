@@ -33,7 +33,11 @@ const importCSV = async ({ config }: {
 			const language = languages[indexOut];
 
 			// Don't generate output if only header is present in file
-			if(fileData[indexOut] === header[indexOut]) continue;
+			if(fileData[indexOut] === header[indexOut]) {
+				buntstift.verbose('Nothing to import');
+				buntstift.line();
+				continue;
+			}
 			const lexiconFileName = csvFileName.replace(csv.extension, lexicon.extension);
 			buntstift.info(`  - Output lexicon file: ${language}/${lexiconFileName}`);
 			buntstift.line();
