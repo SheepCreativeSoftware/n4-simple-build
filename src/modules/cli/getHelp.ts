@@ -96,6 +96,11 @@ const getHelp = () => {
 					name: 'help',
 					type: Boolean,
 				},
+				{
+					description: 'Display the tool version.',
+					name: 'version',
+					type: Boolean,
+				},
 			],
 		},
 		{

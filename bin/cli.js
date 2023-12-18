@@ -2,14 +2,16 @@
 /* eslint-disable complexity */
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-import { getHelp, initProject, readWriteConfig, runBuild, extractLexiconFiles, lexiconCsvExport, lexiconCsvImport } from '../dist/index.js';
+import {
+	extractLexiconFiles, getAppVersion, getHelp, initProject, lexiconCsvExport, lexiconCsvImport, readWriteConfig, runBuild,
+} from '../dist/index.js';
 import { buntstift } from 'buntstift';
 import commandLineArgs from 'command-line-args';
 
 buntstift.configure(buntstift.getConfiguration().
 	withVerboseMode(true));
 
-const cli = ()=> {
+const cli = async ()=> {
 	/* First - parse the main command */
 	const mainDefinitions = [{ defaultOption: true, name: 'command' }];
 	const mainOptions = commandLineArgs(mainDefinitions, { stopAtFirstUnknown: true });
@@ -20,6 +22,9 @@ const cli = ()=> {
 
 	// eslint-disable-next-line no-underscore-dangle
 	if(argv.includes('--help')) return getHelp();
+
+	// eslint-disable-next-line no-underscore-dangle
+	if(argv.includes('--version')) return buntstift.info(await getAppVersion());
 
 	if(mainOptions.command === 'init') return initProject();
 

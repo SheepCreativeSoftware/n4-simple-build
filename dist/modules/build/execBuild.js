@@ -27,7 +27,7 @@ const execBuild = async function ({ config, noMinify, noPackage }) {
         config.modules.buildVersion = 0;
         currentVersion = modules.lastBuildVersion + '.' + modules.buildVersion;
     }
-    buntstift.info(`--Build module: ${modules.name} v${modules.lastBuildVersion}+${modules.buildVersion}--`);
+    buntstift.info(`--Build module: ${modules.name} v${config.modules.lastBuildVersion}+${config.modules.buildVersion}--`);
     const modulesFolder = path.join(process.cwd(), baseFolder);
     const buildPathFolder = path.join(process.cwd(), buildPath);
     // Copy all source files into the build folder

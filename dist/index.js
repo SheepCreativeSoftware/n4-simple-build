@@ -8,6 +8,7 @@ import { buntstift } from 'buntstift';
 import { execBuild } from './modules/build/execBuild.js';
 import { exportCSV } from './modules/csv/export/exportCSV.js';
 import { extractLexiconFiles } from './modules/extract/extractLexiconFiles.js';
+import { getAppVersion } from './modules/misc/getAppVersion.js';
 import { getHelp } from './modules/cli/getHelp.js';
 import { importCSV } from './modules/csv/import/importCsv.js';
 import { initProject } from './modules/init/initProject.js';
@@ -34,4 +35,4 @@ const lexiconCsvImport = async () => {
     }
     await importCSV({ config });
 };
-export { extractLexiconFiles, initProject, lexiconCsvExport, lexiconCsvImport, getHelp, runBuild, listConfig, readWriteConfig, };
+export { extractLexiconFiles, getAppVersion, getHelp, initProject, lexiconCsvExport, lexiconCsvImport, listConfig, readWriteConfig, runBuild, };
