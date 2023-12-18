@@ -4,6 +4,7 @@ import { getCurrentDateTimeString } from '../../misc/getDate.js';
 import { getFileLineEnding } from '../../misc/getFileLineEnding.js';
 import { LexiconFileConfig } from '../../../interfaces/BuildConfig/LexiconFileConfig.js';
 import { LexiconModuleConfig } from '../../../interfaces/BuildConfig/LexiconModuleConfig.js';
+import { unescapeCsvChars } from './unescapeCsvChars.js';
 
 const startWithThirdRow = 2;
 const startAfterHeader = 1;
@@ -62,8 +63,14 @@ const convertCsvData = function({ csvFile, lexicon, csv, modules }: {
 	// Split into single lines
 	const lines = csvFile.split(lineEnding);
 
+	// Regex to find the delimiter but ignore delimiters which are escaped with escape character
+	const regexEscapedDelimiter = RegExp('(?<!'+csv.escapeCharacter+')'+csv.delimiter+'(?!'+csv.escapeCharacter+')');
+	const regexNotEscapedDelimiterBefore = RegExp('(?<!'+csv.escapeCharacter+')'+csv.delimiter+'(?='+csv.escapeCharacter+')');
+	const regexNotEscapedDelimiterAfter = RegExp('(?<='+csv.escapeCharacter+')'+csv.delimiter+'(?!'+csv.escapeCharacter+')');
+	const regex = RegExp(regexEscapedDelimiter+'|'+regexNotEscapedDelimiterBefore+'|'+regexNotEscapedDelimiterAfter);
+
 	// First line of CSV are header elements
-	const headerElements = lines[0].split(csv.delimiter);
+	const headerElements = lines[0].split(regex);
 	const languages = getLanguagesFromHeader({ headerElements, lexicon });
 
 	// Create header for each language file
@@ -73,7 +80,7 @@ const convertCsvData = function({ csvFile, lexicon, csv, modules }: {
 	for(let indexLines = startAfterHeader; indexLines < lines.length; indexLines++) {
 		const line = lines[indexLines];
 
-		const rowElements = line.split(csv.delimiter);
+		const rowElements = line.split(regex);
 
 		// First and second row are for key and default langauge
 		const key = rowElements[0];
@@ -83,8 +90,8 @@ const convertCsvData = function({ csvFile, lexicon, csv, modules }: {
 			// Skip Row Elements if these are empty
 			// eslint-disable-next-line no-continue
 			if(rowElements[indexRow] === '') continue;
-
-			const escapedText = escapeString({ text: rowElements[indexRow] });
+			const csvEscapedText = unescapeCsvChars({ csv, inputText: rowElements[indexRow] });
+			const escapedText = escapeString({ text: csvEscapedText });
 
 			// Every row is a item of a single language
 			const arrayPosition = indexRow-startAtBegining;

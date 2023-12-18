@@ -21,6 +21,7 @@ const baseConfig = {
 	csv: {
 		delimiter: ';',
 		encoding: 'win1252',
+		escapeCharacter: '"',
 		exportPath: 'lex-export',
 		extension: 'csv',
 		importPath: 'lex-import',

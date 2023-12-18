@@ -4,5 +4,6 @@ interface CsvFileConfig extends FileConfig {
     delimiter: string;
     importPath: string;
     exportPath: string;
+    escapeCharacter: string;
 }
 export { CsvFileConfig };

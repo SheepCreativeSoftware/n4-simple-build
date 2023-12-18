@@ -21,6 +21,7 @@ const initCliPromt = async ({ config }) => {
         config.lexicon.defaultType = await buntstift.confirm('Is this Lexicon a default Lexicon?', config.lexicon.defaultType);
         config.csv.encoding = await buntstift.ask('Encoding for CSV files:', { default: config.csv.encoding });
         config.csv.delimiter = await buntstift.ask('Delimiter for CSV files:', { default: config.csv.delimiter });
+        config.csv.escapeCharacter = await buntstift.ask('Escape character for CSV files:', { default: config.csv.escapeCharacter });
         config.modules.relativeLexiconBasePath = 'lex-base';
     }
     return config;

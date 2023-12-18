@@ -1,4 +1,5 @@
 import { CsvFileConfig } from '../../../interfaces/BuildConfig/CsvFileConfig.js';
+import { escapeCsvChars } from './escapeCsvChars.js';
 import { LexiconObject } from '../../../interfaces/Lexicon/LexiconObject.js';
 
 /** Converts a LexiconObject into a CSV output */
@@ -14,7 +15,10 @@ const createCsvOutput = function(lexiconObject: LexiconObject, languages: string
 		currentText += key+csv.delimiter;
 		languages.forEach((language) => {
 			if(typeof lexiconKey[language] === 'undefined') currentText += csv.delimiter;
-			if(typeof lexiconKey[language] !== 'undefined') currentText += lexiconKey[language]+csv.delimiter;
+			if(typeof lexiconKey[language] !== 'undefined') {
+				const escapedText = escapeCsvChars({ csv, inputText: lexiconKey[language] });
+				currentText += escapedText+csv.delimiter;
+			}
 		});
 		currentText += '\r\n';
 		csvFile += currentText;
