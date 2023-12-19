@@ -1,6 +1,6 @@
 {
   "name": "n4-simple-build",
-  "version": "0.8.7",
+  "version": "0.8.8",
   "copyright": "Copyright © 2023 Marina Egner",
   "description": "Simple N4 module build & Lexicon handling tool",
   "main": "dist/index.js",
@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "npm run bin/cli.js",
-    "test": "cd .testing && mocha ../test/ --recursive && cd .."
+    "test": "tsc -b && cd .testing && mocha ../test/ --recursive && cd .."
   },
   "repository": {
     "type": "git",
