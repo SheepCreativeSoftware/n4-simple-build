@@ -46,7 +46,6 @@ const convertCsvData = function ({ csvFile, lexicon, csv, modules }) {
         // Additional languages are coming after them beginging with third row
         for (let indexRow = startWithThirdRow; indexRow < rowElements.length; indexRow++) {
             // Skip Row Elements if these are empty
-            // eslint-disable-next-line no-continue
             if (rowElements[indexRow] === '')
                 continue;
             const escapedText = escapeString({ text: rowElements[indexRow] });

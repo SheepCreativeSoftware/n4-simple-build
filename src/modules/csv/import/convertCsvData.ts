@@ -70,8 +70,6 @@ const convertCsvData = function({ csvFile, lexicon, csv, modules }: {
 	// First line of CSV are header elements
 	const headerElements = convertCsvLine({ csv, line: lines[0] });
 
-
-
 	const languages = getLanguagesFromHeader({ headerElements, lexicon });
 
 	// Create header for each language file
@@ -94,7 +92,6 @@ const convertCsvData = function({ csvFile, lexicon, csv, modules }: {
 		// Additional languages are coming after them beginging with third row
 		for(let indexRow = startWithThirdRow; indexRow < rowElements.length; indexRow++) {
 			// Skip Row Elements if these are empty
-			// eslint-disable-next-line no-continue
 			if(rowElements[indexRow] === '') continue;
 			const escapedText = escapeString({ text: rowElements[indexRow] });
 
