@@ -4,14 +4,17 @@
   "copyright": "Copyright © 2023 Marina Egner",
   "description": "Simple N4 module build & Lexicon handling tool",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "module": "ES2020",
   "type": "module",
   "bin": {
-    "n4-simple-build": "/bin/cli.js"
+    "n4-simple-build": "bin/cli.js"
   },
   "scripts": {
     "start": "npm run bin/cli.js",
-    "test": "tsc -b && cd .testing && mocha ../test/ --recursive && cd .."
+    "test": "tsc -b && cd .testing && mocha ../test/ --recursive && cd ..",
+	"prepare": "tsc -b",
+    "prepublish": "npm run prepare"
   },
   "repository": {
     "type": "git",

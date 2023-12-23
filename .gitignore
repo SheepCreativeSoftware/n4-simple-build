@@ -9,5 +9,6 @@ module/
 lex-base/
 lex-export/
 lex-import/
-.testing
+.testing/
 testModules/
+dist/
