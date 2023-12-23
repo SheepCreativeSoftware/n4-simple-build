@@ -1,7 +1,7 @@
 import * as fs from 'fs/promises';
 import { buntstift } from 'buntstift';
 import path from 'path';
-import { showProgressBar } from '../misc/showProgressBar.js';
+import { ProgressBar } from 'progress-bar-capture';
 import { unzipFileMultiple } from './unzipFile.js';
 /** Search in path for jar files and unzip metadata and lexicon file */
 const searchInPath = async ({ config, searchPath }) => {
@@ -10,10 +10,13 @@ const searchInPath = async ({ config, searchPath }) => {
     buntstift.success(`Found ${filePath.length} files in path to extract`);
     const promisesUnzip = [];
     let index = 0;
+    const progressBar = new ProgressBar({ maxNumber: filePath.length, prefixText: 'Unzip files' });
+    progressBar.start();
     for (const file of filePath) {
         if (file.includes('.jar') === false)
             continue;
         const zipFilePath = path.join(searchPath, file);
+        buntstift.verbose(`Unzip: ${zipFilePath}`);
         const promiseUnzip = await unzipFileMultiple({
             findFiles: ['META-INF/module.xml', lexiconExtension],
             outputPath: path.resolve('.temp', file.replace('.jar', '')),
@@ -21,8 +24,10 @@ const searchInPath = async ({ config, searchPath }) => {
         });
         promisesUnzip.push(promiseUnzip);
         index++;
-        showProgressBar('Extracting', index, filePath.length);
+        progressBar.update(index);
     }
+    buntstift.success('Unzip finished');
+    progressBar.finish();
     const promiseResults = await Promise.allSettled(promisesUnzip);
     return promiseResults;
 };
