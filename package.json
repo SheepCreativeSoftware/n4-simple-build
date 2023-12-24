@@ -13,7 +13,7 @@
   "scripts": {
     "start": "npm run bin/cli.js",
     "test": "tsc -b && cd .testing && mocha ../test/ --recursive && cd ..",
-	"prepare": "tsc -b",
+    "prepare": "tsc -b",
     "prepublish": "npm run prepare"
   },
   "repository": {
@@ -29,7 +29,7 @@
   ],
   "author": "Marina Egner",
   "engines": {
-    "node": ">=20.10.0"
+    "node": ">=20.0.0"
   },
   "license": "MIT",
   "bugs": {
@@ -60,6 +60,7 @@
     "iconv-lite": "^0.6.3",
     "minify": "^9.2.0",
     "progress-bar-capture": "^1.0.0",
+    "readlines-iconv": "^0.1.1",
     "unzipper": "^0.10.14",
     "xmlbuilder2": "^3.1.1",
     "zip-a-folder": "^3.1.5"

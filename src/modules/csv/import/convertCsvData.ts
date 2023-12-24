@@ -83,6 +83,7 @@ const convertCsvData = function({ csvFile, lexicon, csv, modules }: {
 
 	for(let indexLines = startAfterHeader; indexLines < lines.length; indexLines++) {
 		const line = lines[indexLines];
+		if(line === '') continue;
 
 		const rowElements = convertCsvLine({ csv, line });
 
