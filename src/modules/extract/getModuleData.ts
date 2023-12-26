@@ -1,16 +1,27 @@
-import { ParsedModuleMetaFile } from '../../interfaces/extract/ParsedMetaFile.js';
+import { ObjectWriterOptions, XMLBuilderCreateOptions } from 'xmlbuilder2/lib/interfaces.js';
+import { convert } from 'xmlbuilder2';
+import { ModuleMetaFile } from '../../interfaces/moduleMeta/ModuleMetaFile.js';
 import { readFile } from '../misc/copyFiles.js';
-import { XMLParser } from 'fast-xml-parser';
+
+const buildOptions:XMLBuilderCreateOptions = {
+	convert: {
+		att: '@',
+	},
+};
+
+const convertOptions: ObjectWriterOptions = {
+	format: 'object',
+	group: true,
+};
 
 /** Reads the modulename from the module.xml file */
 const getModuleData = async ({ encoding, filePath }: {
 	encoding: string,
 	filePath: string,
 }): Promise<[string, boolean]> => {
-	const parser = new XMLParser({ attributeNamePrefix: '@', ignoreAttributes: false });
 	const xmlData = await readFile(filePath, { encoding });
-	const dataObject = parser.parse(xmlData) as ParsedModuleMetaFile;
-	const moduleName = dataObject.module['@moduleName'];
+	const dataObject = convert(buildOptions, xmlData, convertOptions) as unknown as ModuleMetaFile;
+	const moduleName = dataObject.module['@'].moduleName;
 	let lexiconType = false;
 	if(dataObject.module.lexicons) lexiconType = true;
 	return [moduleName, lexiconType];
