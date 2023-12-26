@@ -54,6 +54,19 @@ const writeFile = async function(file: string, fileData: string, { encoding }: {
 	}
 };
 
+/** Writes a file with almost any encoding */
+const appendFile = async function(file: string, fileData: string, { encoding }: {
+	encoding: string,
+}): Promise<void> {
+	try {
+		const buffer = iconv.encode(fileData, encoding);
+		await fse.outputFile(file, buffer, { flag: 'a' });
+		return Promise.resolve();
+	} catch (error) {
+		return Promise.reject(error);
+	}
+};
+
 /** Reads a file with almost any encoding */
 const readFile = async function(file: string, { encoding }: {
 	encoding: string,
@@ -67,4 +80,4 @@ const readFile = async function(file: string, { encoding }: {
 	}
 };
 
-export { copySrcFiles, copyMultipleFilesSync, readFile, writeFile };
+export { appendFile, copySrcFiles, copyMultipleFilesSync, readFile, writeFile };
