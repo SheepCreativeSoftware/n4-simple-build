@@ -26,11 +26,11 @@ const options: Options = {
 const isMinifiableFile = ({ fileName }: {
 	fileName: string
 }) => {
-	if(fileName.includes('.html')) return true;
-	if(fileName.includes('.htm')) return true;
-	if(fileName.includes('.css')) return true;
-	if(fileName.includes('.js')) return true;
-	if(fileName.includes('.mjs')) return true;
+	if(fileName.endsWith('.html')) return true;
+	if(fileName.endsWith('.htm')) return true;
+	if(fileName.endsWith('.css')) return true;
+	if(fileName.endsWith('.js')) return true;
+	if(fileName.endsWith('.mjs')) return true;
 	return false;
 };
 
@@ -46,9 +46,9 @@ const minifyFiles = async function({ basePath }: {
 	const files = await fs.readdir(basePath, { recursive: true, withFileTypes: true });
 
 	for(const file of files) {
-		if(!file.isFile() || isMinifiableFile({ fileName: file.name })) continue;
+		if(!file.isFile() || !isMinifiableFile({ fileName: file.name })) continue;
 		const filePath = path.join(file.path, file.name);
-		buntstift.info('- Minify:' + file);
+		buntstift.info(`- Minify: ${file.path} - ${file.name}`);
 		/* eslint-disable id-denylist */
 		const [error, data] = await tryToCatch(minify, filePath, options);
 		if(error) buntstift.error(error.message);

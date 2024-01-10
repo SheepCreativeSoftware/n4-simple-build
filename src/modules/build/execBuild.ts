@@ -65,7 +65,7 @@ const execBuild = async function({ config, noMinify, noPackage }: {
 	]);
 
 	// Minify files from config file except for when minify is disabled or if it is a Lexicon module
-	if(type !== 'Lexicon' && noMinify) {
+	if(type !== 'Lexicon' && !noMinify) {
 		try {
 			buntstift.info('- Minify files');
 			await minifyFiles({ basePath: buildPathFolder });
