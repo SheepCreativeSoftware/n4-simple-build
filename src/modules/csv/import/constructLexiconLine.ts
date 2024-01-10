@@ -17,7 +17,10 @@ const constructLexiconLine = (nextLine: string, outputLength: number, config: Bu
 	// Additional languages are coming after them beginging with third row
 	for(let indexRow = startWithThirdRow; indexRow < rowElements.length; indexRow++) {
 		// Skip Row Elements if these are empty
-		if(rowElements[indexRow] === '') continue;
+		if(rowElements[indexRow] === '') {
+			fileData.push(rowElements[indexRow]);
+			continue;
+		}
 		const escapedText = escapeString({ text: rowElements[indexRow] });
 
 		// Every row is a item of a single language
