@@ -53,6 +53,7 @@ const parseCsvLine = ({ csv, line }: {
 			result.push(withoutDuplicates);
 			startPosition = endPosition + charAfter + charAfter;
 			index += charAfter;
+			hasEscape = false;
 			continue;
 		}
 	}
