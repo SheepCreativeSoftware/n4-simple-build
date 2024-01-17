@@ -55,7 +55,7 @@ const execBuild = async function({ config, noMinify, noPackage }: {
 
 	const moduleMetaFile = await fse.readJSON(path.join(process.cwd(), 'module', 'META-INF', 'module.json')) as ModuleMetaFile;
 	if(type === 'Lexicon') await addLexiconToModuleMeta({ config, moduleMetaFile });
-	const moduleXmlData = createModuleXml({ buildConfig: config, moduleConfig: moduleMetaFile });
+	const moduleXmlData = createModuleXml({ moduleConfig: moduleMetaFile, vendor: config.vendor, version: currentVersion });
 
 	await fse.ensureDir(path.join(buildPathFolder, 'META-INF'));
 
