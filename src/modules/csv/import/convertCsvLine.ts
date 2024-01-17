@@ -1,6 +1,7 @@
 import { CsvFileConfig } from '../../../interfaces/BuildConfig/CsvFileConfig.js';
 
 const charAfter = 1;
+const noIndexFound = -1;
 
 /** Parses a line of CSV */
 const parseCsvLine = ({ csv, line }: {
@@ -19,7 +20,10 @@ const parseCsvLine = ({ csv, line }: {
 
 		if(!hasEscape) {
 			// If line does not have escape then we can simply search for the next delimiter
-			const currentPosition = line.indexOf(csv.delimiter, startPosition);
+			let currentPosition = line.indexOf(csv.delimiter, startPosition);
+
+			// If line does not end with delimiter the position will result with -1, but it is end of line
+			if(currentPosition === noIndexFound) currentPosition = line.length;
 			const endPosition = currentPosition;
 			result.push(line.substring(startPosition, endPosition));
 			startPosition = currentPosition + charAfter;
