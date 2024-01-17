@@ -19,7 +19,7 @@ const convertSingleCsv = async (csvFileName: string, importPath: string, config:
 	await lineHandler.open(path.join(importPath, csvFileName));
 
 	// First line is Header
-	const headerLine = await lineHandler.next();
+	const headerLine = (await lineHandler.next()).value;
 
 	// If null then the file must be empty and can be skipped
 	if(headerLine === null) return;
@@ -33,11 +33,8 @@ const convertSingleCsv = async (csvFileName: string, importPath: string, config:
 	}
 
 	// Loop through each line, convert and write the data
-	let nextLine = null;
-	do {
-		nextLine = await lineHandler.next();
+	for await (const nextLine of lineHandler) {
 		if(nextLine === '') continue;
-		if(nextLine === null) break;
 		const fileData = constructLexiconLine(nextLine, outputInfos.length, config);
 
 		// Write to all of the resulting files at once
@@ -49,7 +46,7 @@ const convertSingleCsv = async (csvFileName: string, importPath: string, config:
 			// ..
 			if(result.status === 'rejected') buntstift.error(result.reason);
 		}
-	} while(nextLine !== null);
+	}
 
 	// End this Csv import by closing handle and notify user
 	for(const outputInfo of outputInfos) {

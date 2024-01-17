@@ -1,6 +1,6 @@
 {
   "name": "n4-simple-build",
-  "version": "0.9.0-beta.3",
+  "version": "0.9.0-beta.6",
   "copyright": "Copyright © 2023 Marina Egner",
   "description": "Simple N4 module build & Lexicon handling tool",
   "main": "dist/index.js",
@@ -59,7 +59,7 @@
     "iconv-lite": "^0.6.3",
     "minify": "^9.2.0",
     "progress-bar-capture": "^1.0.0",
-    "readlines-iconv": "^1.0.2",
+    "readlines-iconv": "^2.0.1",
     "unzipper": "^0.10.14",
     "xmlbuilder2": "^3.1.1",
     "zip-a-folder": "^3.1.5"
