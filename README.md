@@ -1,4 +1,4 @@
-# n4-simple-build **[WIP]**  
+# n4-simple-build 
 Simple N4 module build & Lexicon handling tool
 ====================
 
@@ -7,11 +7,6 @@ Simple N4 module build & Lexicon handling tool
 [![GitHub](https://img.shields.io/github/license/SheepCreativeSoftware/n4-simple-build)](https://github.com/SheepCreativeSoftware/n4-simple-build)
 [![node-lts](https://img.shields.io/node/v-lts/n4-simple-build)](https://www.npmjs.com/package/n4-simple-build)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=RG6PSXR828X94)
-
-## Important Note
-**This module is still work in progress!**  
-**Major changes can and will happend before v1.0.0**  
-**Do not use this in an production enviroment**  
 
 ## Description
 Node.JS module to build simple N4 Framework modules.  
@@ -37,6 +32,11 @@ Get a full list of commands
 n4-simple-build --help
 ```
 
+### Check the version
+```bash
+n4-simple-build --version
+```
+
 ### Initialize Project
 For starting a new project, you must use the init command to initialize current working path.  
 This will create basic folders and files for later usage
@@ -48,7 +48,8 @@ n4-simple-build init
 Simply Add your files into the `src` or `rc` folder
 
 ### Edit config
-You can use the `config-ls`, `config-add`, `config-rm` and `config-set` command to modify the config, like the dependecies or the version
+You can use the `config-ls`, `config-add`, `config-rm` and `config-set` command to modify the config, like the dependecies or the version.
+You can get more detailed info about this commands by using the `--help` command.
 
 ### Build module
 If you're ready then you can simply create a module by running the build command
@@ -105,5 +106,5 @@ Root
 
 ```
 
-## References
-
+## License
+Copyright (c) 2023-2024 Marina Egner ([sheepcs.de](https://sheepcs.de)). This is free software and may be redistributed under the terms specified in the LICENSE file.
