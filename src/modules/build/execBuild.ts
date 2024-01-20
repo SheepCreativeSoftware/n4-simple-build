@@ -42,6 +42,9 @@ const execBuild = async function({ config, noMinify, noPackage }: {
 	const modulesFolder = path.join(process.cwd(), baseFolder);
 	const buildPathFolder = path.join(process.cwd(), buildPath);
 
+	// Remove old data from build path
+	await fse.emptyDir(buildPathFolder);
+
 	// Copy all source files into the build folder
 	buntstift.info('- Copy source files');
 	buntstift.verbose(`(Exclude: ${JSON.stringify(filterFiles)})`);

@@ -19,7 +19,7 @@ For simple ressource modules which do not need java files or which not require a
 It also is able to extract original (english) lexicon files from N4 java modules and can create CSV-files for translation into different languages.  
 It can re-import translated CSV-files for building simple Lexicon modules for N4.  
 
-## Instalation
+## Installation
 ```bash
 npm i -g n4-simple-build
 ```
